@@ -93,10 +93,10 @@ export default class IaphubData extends React.Component {
       }
       // Set device params if defined
       if (props.deviceParams) {
-        Iaphub.setDeviceParams(props.deviceParams);
+        await Iaphub.setDeviceParams(props.deviceParams);
       }
       // Refresh products
-      this.refreshProducts();
+      await this.refreshProducts();
     }
     catch(err) {
       this.setState({isLoading: false});
@@ -106,7 +106,7 @@ export default class IaphubData extends React.Component {
   login = async (userId) => {
     try {
       await Iaphub.login(userId);
-      this.refreshProducts();
+      await this.refreshProducts();
     }
     catch(err) {
       // No need to do anything here
@@ -115,8 +115,8 @@ export default class IaphubData extends React.Component {
 
   logout = () => {
     try {
-      Iaphub.logout();
-      this.refreshProducts();
+      await Iaphub.logout();
+      await this.refreshProducts();
     }
     catch(err) {
       // No need to do anything here
@@ -126,7 +126,7 @@ export default class IaphubData extends React.Component {
   setUserTags = async (tags) => {
     try {
       await Iaphub.setUserTags(tags);
-      this.refreshProducts();
+      await this.refreshProducts();
     }
     catch(err) {
       // No need to do anything here
@@ -135,8 +135,8 @@ export default class IaphubData extends React.Component {
 
   setDeviceParams = (params) => {
     try {
-      Iaphub.setDeviceParams(params);
-      this.refreshProducts();
+      await Iaphub.setDeviceParams(params);
+      await this.refreshProducts();
     }
     catch(err) {
       // No need to do anything here
