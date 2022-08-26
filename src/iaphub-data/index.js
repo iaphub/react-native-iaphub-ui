@@ -76,7 +76,8 @@ export default class IaphubData extends React.Component {
       // Listen for buy request
       this.buyRequestListener = Iaphub.addEventListener('onBuyRequest', async (opts) => {
         try {
-          await buyWithAlert(() => Iaphub.buy(opts.sku), this.props.lang);
+          var transaction = await buyWithAlert(() => Iaphub.buy(opts.sku), this.props.lang);
+          this.onPurchase(transaction);
         }
         catch(err) {
           // No need to do anything here
