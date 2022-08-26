@@ -7,7 +7,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-iaphub": "^8.1.1"
+    "react-native-iaphub": "^8.2.2"
   },
   "dependencies": {
     "lodash.isequal": "^4.5.0",
