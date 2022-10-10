@@ -1,0 +1,17 @@
+{
+  "name": "react-native-iaphub-ui",
+  "version": "1.0.0",
+  "description": "Plug & Play react native component for in-app purchase, includes a beautiful Paywall with the content translated in 6 languages",
+  "main": "src/index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-iaphub": "^8.1.1"
+  },
+  "dependencies": {
+    "lodash.isequal": "^4.5.0",
+    "prop-types": "^15.8.1",
+    "react-native-material-ripple": "^0.9.1"
+  }
+}
