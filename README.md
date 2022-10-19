@@ -45,8 +45,8 @@ import {IaphubDataProvider} from 'react-native-iaphub-ui';
 | allowAnonymousPurchase | `Boolean` | ***Optional***, if you want to allow purchases when the user isn't logged in (false by default) |
 | userTags | `Object` | ***Optional***, user tags |
 | deviceParams | `Object` | ***Optional***, device params |
-| onError | `Function` | ***Optional***, event triggered when an error occurs |
-| onPurchase | `Function` | ***Optional***, event triggered when a purchase is successful |
+| onError | `Function` | ***Optional***, event triggered when an error occurs (***err*** provided as argument) |
+| onPurchase | `Function` | ***Optional***, event triggered when a purchase is successful (***transaction*** provided as argument) |
 
 ## Access IAPHUB data
 
@@ -93,8 +93,8 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 | defaultSelectedProductIndex | `Number` | Index of the product selected by default (0 by default) |
 | theme | `Object` | Theme object to customize the styles of the components (see style customization below) |
 | display | `String` | Orientation of the products for sale list (Possible values: 'horizontal', 'vertical') ('horizontal' by default) |
-| onBuyStart | `Function` | Event triggered when the user clicks on the buy button |
-| onBuyEnd | `Function` | Event triggered when the user purchase is done |
+| onBuyStart | `Function` | Event triggered when the user clicks on the buy button (***product*** provided as argument) |
+| onBuyEnd | `Function` | Event triggered when the user purchase is done (***err***, ***transaction*** provided as arguments) |
 | onRestoreStart | `Function` | Event triggered when the user clicks on the restore button |
 | onRestoreEnd | `Function` | Event triggered when the user restore is done |
 | onShowManageSubscriptions | `Function` | Event triggered when the user clicks on the button to manage the subscriptions |
@@ -102,7 +102,7 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 
 ## Render paywall optimized for a subscription group
 
-A [subscription group](/docs/getting-started/create-subscription-groups) is needed when you offer the same subscription with different durations.<br/>
+A [subscription group](https://www.iaphub.com/docs/getting-started/create-subscription-groups) is needed when you offer the same subscription with different durations.<br/>
 Since it is a pretty common practice we've developped a separate `PaywallSubscriptionGroup` component optimized to display a subscription group.<br/>
 
 ⚠ If the data provided doesn't have one (and only) subscription group, an error message will be displayed.
