@@ -11,7 +11,7 @@ const formatStyles = (styles) => {
 }
 
 const compileStyles = (defaultStyles, customStyles, customStyle) => {
-	styles = formatStyles(defaultStyles);
+	var styles = formatStyles(defaultStyles);
 
 	if (customStyles) {
 		Object.keys(customStyles).forEach((propertyName) => {
