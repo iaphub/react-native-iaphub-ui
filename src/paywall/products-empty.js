@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: 'black',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+    textAlign: 'center'
 	},
 	button: {
     justifyContent: 'center',
