@@ -91,9 +91,13 @@ class Paywall extends React.Component {
     var error = null;
     var alertTitle = translate('restoreSuccessTitle');
     var alertMessage = translate('restoreSuccessMessage');
+    var showAlert = true;
     // Start restore
     try {
-      await onRestoreStart();
+      var result = await onRestoreStart();
+      if (result === false) {
+        showAlert = false;
+      }
     }
     // Catch any error
     catch (err) {
@@ -104,12 +108,17 @@ class Paywall extends React.Component {
     // Update state
     this.setState({isRestoreLoading: false});
     // Show alert
-    Alert.alert(alertTitle, alertMessage, [
-      {
-        text: translate('ok'),
-        onPress: () => onRestoreEnd(error)
-      }
-    ]);
+    if (showAlert) {
+      Alert.alert(alertTitle, alertMessage, [
+        {
+          text: translate('ok'),
+          onPress: () => onRestoreEnd(error)
+        }
+      ]);
+    }
+    else {
+      onRestoreEnd(error);
+    }
   }
 
   onShowManageSubscriptions = async (product) => {

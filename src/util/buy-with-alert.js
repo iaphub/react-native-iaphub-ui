@@ -11,6 +11,8 @@ export default async function(fn, lang = 'en', i18n) {
   // Start buy
   try {
     transaction = await fn();
+    // Do not do anything if the method returns false
+    if (transaction === false) return false;
     // Handle failed webhook
     if (transaction.webhookStatus == "failed") {
       alertTitle = translate('buyErrorTitle');
