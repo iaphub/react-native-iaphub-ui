@@ -113,7 +113,7 @@ export default class IaphubData extends React.Component {
     }
   }
 
-  logout = () => {
+  logout = async () => {
     try {
       await Iaphub.logout();
       await this.refreshProducts();
@@ -133,7 +133,7 @@ export default class IaphubData extends React.Component {
     }
   }
 
-  setDeviceParams = (params) => {
+  setDeviceParams = async (params) => {
     try {
       await Iaphub.setDeviceParams(params);
       await this.refreshProducts();
