@@ -17,7 +17,7 @@ const dictionary = {
 export default (componentName, locale, data) => {
 	var localeDictionary = dictionary[locale || 'en'];
 	if (!localeDictionary) {
-		throw `Language '${locale}' not found`;
+		localeDictionary = dictionary['en'];
 	}
 	var componentDictionary = localeDictionary[componentName];
 	if (!componentDictionary) {
