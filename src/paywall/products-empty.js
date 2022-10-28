@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, Text, ActivityIndicator, Platform} from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import withStyles from '../util/with-styles';
 import buildTranslate from '../i18n';
