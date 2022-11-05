@@ -13,7 +13,7 @@ class App extends React.Component {
   renderPaywall() {
     return (
       <PaywallSubscriptionGroup
-        lang="de"
+        lang="en"
         defaultSelectedProductIndex={1}
         activeProducts={store.activeProducts}
         productsForSale={store.productsForSale}

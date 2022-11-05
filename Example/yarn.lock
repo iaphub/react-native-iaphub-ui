@@ -5843,10 +5843,10 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   "version" "0.0.7"
 
-"react-native-iaphub@^8.1.0":
-  "integrity" "sha512-7uQd0fjUs3Fgzkzf3Xm8AqtMPr6awQVZqZub0UlaLfZC4efjy2Ub0HQisPbjgWI+YPkTBPZ6TjOkmWYs9ficwg=="
-  "resolved" "https://registry.npmjs.org/react-native-iaphub/-/react-native-iaphub-8.1.0.tgz"
-  "version" "8.1.0"
+"react-native-iaphub@^8.2.3":
+  "integrity" "sha512-VhlwGpx4Zqg8av1aVf7eli+2ckHex4znDyIODhNAmNzKrBAqo4ESQRcZk+m3GEve0wGwBv4ZycSXEKOGnHkY+A=="
+  "resolved" "https://registry.npmjs.org/react-native-iaphub/-/react-native-iaphub-8.2.3.tgz"
+  "version" "8.2.3"
 
 "react-native@*", "react-native@0.69.5":
   "integrity" "sha512-4Psrj1nDMLQjBXVH8n3UikzOHQc8+sa6NbxZQR0XKtpx8uC3HiJBgX+/FIum/RWxfi5J/Dt/+A2gLGmq2Hps8g=="
