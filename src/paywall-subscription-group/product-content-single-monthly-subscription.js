@@ -24,7 +24,7 @@ class ProductSingle extends Component {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: 70,
+    minHeight: 70,
     justifyContent: "center",
     alignItems: "center"
   }
