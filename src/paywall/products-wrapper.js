@@ -13,6 +13,7 @@ class ProductsWrapper extends React.Component {
         product={product}
         index={index}
         isSelected={index == selectedIndex}
+        productsForSale={productsForSale}
         {...props}/>
     ))
   }

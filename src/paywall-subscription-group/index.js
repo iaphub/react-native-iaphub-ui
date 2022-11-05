@@ -6,6 +6,8 @@ import DefaultProduct from './product';
 import DefaultProductTitle from './product-title';
 import DefaultProductPrice from './product-price';
 import DefaultProductPricePerMonth from './product-price-per-month';
+import DefaultProductContentSingleMonthlySubscription from './product-content-single-monthly-subscription';
+import DefaultProductContent from './product-content';
 import buildTranslate from '../i18n';
 import withStyles from '../util/with-styles';
 
@@ -16,7 +18,7 @@ class PaywallSubscriptionGroup extends React.Component {
 	};
 
   render() {
-    var {styles, Product, ProductTitle, ProductPrice, ProductPricePerMonth, ...props} = this.props;
+    var {styles, Product, ProductContentSingleMonthlySubscription, ProductContent, ProductTitle, ProductPrice, ProductPricePerMonth, ...props} = this.props;
     var translate = buildTranslate('PaywallSubscriptionGroup', this.props.lang, this.props.i18n);
     var sameGroup = true;
 
@@ -36,6 +38,8 @@ class PaywallSubscriptionGroup extends React.Component {
         {...props}
         style={styles.root}
 				Product={DefaultProduct || Product}
+        ProductContent={DefaultProductContent || ProductContent}
+        ProductContentSingleMonthlySubscription={DefaultProductContentSingleMonthlySubscription || ProductContentSingleMonthlySubscription}
         ProductTitle={DefaultProductTitle || ProductTitle}
         ProductPrice={DefaultProductPrice || ProductPrice}
         ProductPricePerMonth={DefaultProductPricePerMonth || ProductPricePerMonth}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import withStyles from '../util/with-styles';
 import style from '../util/style';
 import getSubscriptionPriceDuration from '../util/get-subscription-price-duration';
@@ -16,11 +16,15 @@ class ProductPricePerMonth extends Component {
     var currency = product.localizedPrice.match(/[^0-9.]+/);
     var localizedPrice = isNaN(product.localizedPrice) ? currency + price : price + currency;
     var formattedPrice = getSubscriptionPriceDuration(localizedPrice, "P1M", true, lang, i18n);
+    var split = formattedPrice.split("/");
 
+    if (split.length != 2) return null;
     return (
-      <Text style={[styles.root, style(styles.selectedRoot, isSelected)]}>
-        {formattedPrice}
-      </Text>
+      <View style={[styles.root, style(styles.selectedRoot, isSelected)]}>
+        <Text style={[styles.text, style(styles.selectedText, isSelected), styles.price]}>{split[0]}</Text>
+        <Text style={[styles.text, style(styles.selectedText, isSelected), styles.delimiter]}>/</Text>
+        <Text style={[styles.text, style(styles.selectedText, isSelected), styles.duration]}>{split[1]}</Text>
+      </View>
     );
   }
 
@@ -28,13 +32,28 @@ class ProductPricePerMonth extends Component {
 
 const styles = StyleSheet.create({
   root: {
-    fontSize: 14,
-    color: '#000000',
-    textAlign: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 5
+  },
+  text: {
+    fontSize: 14,
+    color: '#000000'
+  },
+  price: {
+
+  },
+  delimiter: {
+
+  },
+  duration: {
+
   },
   // Style when the product is selected
   selectedRoot: {
+    
+  },
+  selectedText: {
     color: 'white'
   }
 });

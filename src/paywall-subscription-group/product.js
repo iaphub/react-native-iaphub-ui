@@ -7,13 +7,12 @@ import style from '../util/style';
 class Product extends Component {
 
   render() {
-    var {product, index, onProductPress, isSelected, styles, ProductTitle, ProductPrice, ProductPricePerMonth} = this.props;
+    var {product, index, onProductPress, isSelected, styles, ProductContentSingleMonthlySubscription, ProductContent, productsForSale} = this.props;
+    var isSingle = productsForSale.length == 1 && product.subscriptionDuration == "P1M";
 
     return (
       <Ripple style={[styles.root, style(styles.selectedRoot, isSelected)]} onPress={() => onProductPress(product, index)}>
-        {ProductTitle && <ProductTitle {...this.props} styles={null}/>}
-        {ProductPrice && <ProductPrice {...this.props} styles={null}/>}
-        {ProductPricePerMonth && <ProductPricePerMonth {...this.props} styles={null}/>}
+        {isSingle ? <ProductContentSingleMonthlySubscription {...this.props} styles={null}/> : <ProductContent {...this.props} styles={null}/>}
       </Ripple>
     );
   }
@@ -28,6 +27,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: 'white',
     borderRadius: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
     ...Platform.select({
       ios: {
         shadowOpacity: 1,
