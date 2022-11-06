@@ -15,6 +15,7 @@ class App extends React.Component {
       <PaywallSubscriptionGroup
         lang="en"
         defaultSelectedProductIndex={1}
+        err={store.err}
         activeProducts={store.activeProducts}
         productsForSale={store.productsForSale}
         onBuyStart={(product) => store.buy(product.sku)}

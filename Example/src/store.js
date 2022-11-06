@@ -9,6 +9,7 @@ class Store {
   isLoaded = false;
 	productsForSale = null;
 	activeProducts = null;
+  err = null;
 
   constructor() {
     makeAutoObservable(this)
@@ -174,7 +175,7 @@ class Store {
       ];
 		}
     catch (err) {
-			console.error(err);
+			this.err = err;
 		}
 	}
 

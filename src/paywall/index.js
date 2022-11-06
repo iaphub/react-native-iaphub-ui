@@ -6,7 +6,7 @@ import DefaultProductsWrapper from './products-wrapper';
 import DefaultProduct from './product';
 import DefaultProductTitle from './product-title';
 import DefaultProductPrice from './product-price';
-import DefaultProductsEmpty from './products-empty';
+import DefaultProductsError from './products-error';
 import DefaultIntroPhasesWrapper from './intro-phases-wrapper';
 import DefaultIntroPhase from './intro-phase';
 import DefaultSubscriptionTerms from './subscription-terms';
@@ -18,6 +18,7 @@ export default class PaywallWrapper extends React.Component {
 
 	static propTypes = {
 		isLoading: PropTypes.bool,
+		err: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 		productsForSale: PropTypes.array,
 		activeProducts: PropTypes.array,
 		lang: PropTypes.string,
@@ -35,7 +36,7 @@ export default class PaywallWrapper extends React.Component {
 		ProductTitle: PropTypes.func,
 		ProductPrice: PropTypes.func,
 		ProductsWrapper: PropTypes.func,
-		ProductsEmpty: PropTypes.func,
+		ProductsError: PropTypes.func,
 		IntroPhasesWrapper: PropTypes.func,
 		IntroPhase: PropTypes.func,
 		Restore: PropTypes.func,
@@ -57,7 +58,7 @@ export default class PaywallWrapper extends React.Component {
 	};
 
   render() {
-		var {ActiveSubscription, ProductsWrapper, Product, ProductTitle, ProductPrice, ProductsEmpty, IntroPhasesWrapper, IntroPhase, SubscriptionTerms, Restore, Buy, Loading, ...props} = this.props;
+		var {ActiveSubscription, ProductsWrapper, Product, ProductTitle, ProductPrice, ProductsError, IntroPhasesWrapper, IntroPhase, SubscriptionTerms, Restore, Buy, Loading, ...props} = this.props;
 
     return (
 			<Paywall
@@ -67,7 +68,7 @@ export default class PaywallWrapper extends React.Component {
 				Product={(Product === undefined) ? DefaultProduct : Product}
 				ProductTitle={(ProductTitle === undefined) ? DefaultProductTitle : ProductTitle}
 				ProductPrice={(ProductPrice === undefined) ? DefaultProductPrice : ProductPrice}
-				ProductsEmpty={(ProductsEmpty === undefined) ? DefaultProductsEmpty : ProductsEmpty}
+				ProductsError={(ProductsError === undefined) ? DefaultProductsError : ProductsError}
 				IntroPhasesWrapper={(IntroPhasesWrapper === undefined) ? DefaultIntroPhasesWrapper : IntroPhasesWrapper}
 				IntroPhase={(IntroPhase === undefined) ? DefaultIntroPhase : IntroPhase}
 				SubscriptionTerms={(SubscriptionTerms === undefined) ? DefaultSubscriptionTerms : SubscriptionTerms}

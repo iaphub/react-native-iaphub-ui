@@ -46,10 +46,12 @@ export default {
 		update: () => `アップデート`
 	},
 	/*
-	 * ProductsEmpty component
+	 * ProductsError component
 	 */
-	ProductsEmpty: {
-		description: () => `販売する商品はありません。しばらくしてからもう一度お試しください。`,
+	ProductsError: {
+		noProducts: () => `販売する商品はありません。しばらくしてからもう一度お試しください。`,
+		billingUnavailable: () => `お使いのデバイスでは課金システムを現在ご利用いただけません。しばらくしてからもう一度お試しください。`,
+		networkError: () => `ネットワーク エラーです。後でもう一度お試しください。`,
 		tryAgain: () => `再試行`
 	},
 	/*

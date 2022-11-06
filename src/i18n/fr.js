@@ -46,10 +46,12 @@ export default {
 		update: () => `Mettre à jour`
 	},
 	/*
-	 * ProductsEmpty component
+	 * ProductsError component
 	 */
-	ProductsEmpty: {
-		description: () => `Aucun produit en vente, veuillez réessayer plus tard.`,
+	ProductsError: {
+		noProducts: () => `Aucun produit en vente, veuillez réessayer plus tard.`,
+		billingUnavailable: () => `Les achats ne sont actuellement pas supportés sur votre téléphone, veuillez réessayer plus tard.`,
+		networkError: () => `Erreur réseau, veuillez réessayer plus tard.`,
 		tryAgain: () => `Réessayer`
 	},
 	/*

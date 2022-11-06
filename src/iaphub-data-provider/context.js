@@ -3,6 +3,7 @@ import React from 'react';
 const Context = React.createContext({
   lang: null,
 	isLoading: null,
+  err: null,
   activeProducts: null,
   productsForSale: null,
   onBuyStart: null,

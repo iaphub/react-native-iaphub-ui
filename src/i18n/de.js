@@ -46,10 +46,12 @@ export default {
 		update: () => `Aktualisieren`
 	},
 	/*
-	 * ProductsEmpty component
+	 * ProductsError component
 	 */
-	ProductsEmpty: {
-		description: () => `Kein Produkt im Angebot, bitte versuchen Sie es später.`,
+	ProductsError: {
+		noProducts: () => `Kein Produkt im Angebot, bitte versuchen Sie es später.`,
+		billingUnavailable: () => `Einkäufe werden derzeit auf Ihrem Telefon nicht unterstützt. Bitte versuchen Sie es später.`,
+		networkError: () => `Netzwerkfehler, bitte versuchen Sie es später erneut.`,
 		tryAgain: () => `Versuchen Sie es nochmal`
 	},
 	/*

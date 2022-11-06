@@ -99,7 +99,7 @@ export default class IaphubData extends React.Component {
       await this.refreshProducts();
     }
     catch(err) {
-      this.setState({isLoading: false});
+      this.setState({isLoading: false, err: err});
     }
   }
 
@@ -177,20 +177,21 @@ export default class IaphubData extends React.Component {
   refreshProducts = async () => {
     try {
       var products = await Iaphub.getProducts({includeSubscriptionStates: ['retry_period', 'paused']});
-      this.setState({activeProducts: products.activeProducts, productsForSale: products.productsForSale, isLoading: false});
+      this.setState({activeProducts: products.activeProducts, productsForSale: products.productsForSale, isLoading: false, err: null});
     }
     catch(err) {
-      this.setState({isLoading: false});
+      this.setState({isLoading: false, err: err});
     }
   }
 
   render() {
     var {children, lang} = this.props;
-    var {isLoading, activeProducts, productsForSale} = this.state;
+    var {isLoading, err, activeProducts, productsForSale} = this.state;
 
     return (typeof children == 'function') ? children({
       lang,
       isLoading,
+      err,
       activeProducts,
       productsForSale,
       onBuyStart: this.onBuyStart,

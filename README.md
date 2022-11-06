@@ -88,6 +88,7 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 | isLoading | `Boolean` | Display a spinner when the data is loading |
 | activeProducts | `Array` | List of active products |
 | productsForSale | `Array` | List of products for sale |
+| err | `Object/String` | Customize the error message when the list of products for sale is empty by providing the error code  |
 | lang | `String` | Language ISO code (Possible values: 'en', 'es', 'fr', 'pt', 'jp') ('en' by default) |
 | i18n | `Object` | i18n data (if you want to provide your own translations) |
 | defaultSelectedProductIndex | `Number` | Index of the product selected by default (0 by default) |

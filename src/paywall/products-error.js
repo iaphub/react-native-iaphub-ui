@@ -4,19 +4,27 @@ import Ripple from 'react-native-material-ripple';
 import withStyles from '../util/with-styles';
 import buildTranslate from '../i18n';
 
-class ProductsEmpty extends React.Component {
+class ProductsError extends React.Component {
 
 	static defaultProps = {
 		activityIndicatorColor: '#000000'
 	};
 
   render() {
-		var {styles, lang, i18n, activityIndicatorColor, isProductsRefreshing, onRefreshProducts} = this.props;
-		var translate = buildTranslate('ProductsEmpty', lang, i18n);
+		var {styles, lang, i18n, activityIndicatorColor, isProductsRefreshing, err, onRefreshProducts} = this.props;
+    var errCode = (err && typeof err == "object") ? err.code : err;
+		var translate = buildTranslate('ProductsError', lang, i18n);
+    var description = translate('noProducts');
 
+    if (errCode == "billing_unavailable") {
+      description = translate('billingUnavailable');
+    }
+    else if (errCode) {
+      description = translate('networkError');
+    }
     return (
 			<View style={styles.root}>
-				<Text style={styles.text}>{translate('description')}</Text>
+				<Text style={styles.text}>{description}</Text>
 				<View style={styles.button}>
           {!isProductsRefreshing && <Ripple onPress={() => onRefreshProducts()}>
             <Text style={styles.buttonText}>{translate('tryAgain')}</Text>
@@ -70,4 +78,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStyles(styles, 'ProductsEmpty')(ProductsEmpty);
+export default withStyles(styles, 'ProductsError')(ProductsError);

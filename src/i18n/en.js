@@ -46,10 +46,12 @@ export default {
 		update: () => `Update`
 	},
 	/*
-	 * ProductsEmpty component
+	 * ProductsError component
 	 */
-	ProductsEmpty: {
-		description: () => `No products for sale, please try again later.`,
+	ProductsError: {
+		noProducts: () => `No products for sale, please try again later.`,
+		billingUnavailable: () => `Billing system currently unavailable on your device, please try again later.`,
+		networkError: () => `Network error, please try again later.`,
 		tryAgain: () => `Try again`
 	},
 	/*

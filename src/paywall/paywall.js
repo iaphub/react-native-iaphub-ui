@@ -15,7 +15,7 @@ class Paywall extends React.Component {
         selectedIndex = props.defaultSelectedProductIndex || 0;
         activeProduct = props.productsForSale[selectedIndex];
       }
-      if (!activeProduct) {
+      if (!activeProduct && props.productsForSale && props.productsForSale.length >= 1) {
         selectedIndex = 0;
         activeProduct = props.productsForSale[0];
       }
@@ -157,12 +157,12 @@ class Paywall extends React.Component {
     )
   }
 
-  renderEmptyProductsForSale = () => {
-    var {ProductsEmpty, style, styles, ...props} = this.props;
+  renderProductsError = () => {
+    var {ProductsError, style, styles, ...props} = this.props;
 
-    if (!ProductsEmpty) return null;
+    if (!ProductsError) return null;
     return (
-      <ProductsEmpty {...this.state} {...props} onRefreshProducts={this.onRefreshProducts}/>
+      <ProductsError {...this.state} {...props} onRefreshProducts={this.onRefreshProducts}/>
     )
   }
 
@@ -212,12 +212,12 @@ class Paywall extends React.Component {
   }
 
   renderContent() {
-    var {productsForSale} = this.props;
+    var {productsForSale, err} = this.props;
 
     return (
       <ScrollView alwaysBounceVertical={false}>
         {this.renderActiveSubscription()}
-        {(!productsForSale || !productsForSale.length) && this.renderEmptyProductsForSale()}
+        {(!productsForSale || !productsForSale.length) && this.renderProductsError()}
         {(productsForSale && productsForSale.length > 0) && this.renderProducts()}
         {this.renderIntroPhases()}
         {this.renderSubscriptionTerms()}

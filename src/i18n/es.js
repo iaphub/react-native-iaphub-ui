@@ -46,10 +46,12 @@ export default {
 		update: () => `Actualizar`
 	},
 	/*
-	 * ProductsEmpty component
+	 * ProductsError component
 	 */
-	ProductsEmpty: {
-		description: () => `No hay productos a la venta. Inténtalo de nuevo más tarde.`,
+	ProductsError: {
+		noProducts: () => `No hay productos a la venta. Inténtalo de nuevo más tarde.`,
+		billingUnavailable: () => `El sistema de facturación no está disponible actualmente en tu dispositivo. Inténtalo de nuevo más tarde.`,
+		networkError: () => `Error de red. Inténtalo de nuevo más tarde.`,
 		tryAgain: () => `Intentar otra vez`
 	},
 	/*
