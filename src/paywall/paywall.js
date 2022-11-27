@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Alert, ScrollView, Platform} from 'react-native';
 import withStyles from '../util/with-styles';
 import buyWithAlert from '../util/buy-with-alert';
+import getBuyAlertMessage from '../util/get-buy-alert-message';
 import buildTranslate from '../i18n';
 
 class Paywall extends React.Component {
@@ -65,13 +66,13 @@ class Paywall extends React.Component {
 
   onBuy = async () => {
     var {isBuyLoading, isRestoreLoading, activeProduct} = this.state;
-    var {onBuyStart, onBuyEnd, lang, i18n} = this.props;
+    var {onBuyStart, onBuyEnd, lang, i18n, showBuySuccessAlert, showBuyErrorAlert} = this.props;
     var transaction = null;
 
     if (isBuyLoading || isRestoreLoading) return;
     this.setState({isBuyLoading: true});
     try {
-      transaction = await buyWithAlert(() => onBuyStart(activeProduct), lang, i18n);
+      transaction = await buyWithAlert(() => onBuyStart(activeProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert);
       onBuyEnd(null, transaction);
     }
     catch (err) {
@@ -83,7 +84,7 @@ class Paywall extends React.Component {
 
   onRestore = async () => {
     var {isBuyLoading, isRestoreLoading} = this.state;
-    var {onRestoreStart, onRestoreEnd, lang, i18n} = this.props;
+    var {onRestoreStart, onRestoreEnd, lang, i18n, showRestoreSuccessAlert, showRestoreErrorAlert} = this.props;
     var translate = buildTranslate('Paywall', lang, i18n);
 
     if (isBuyLoading || isRestoreLoading) return;
@@ -104,6 +105,13 @@ class Paywall extends React.Component {
       error = err;
       alertTitle = translate('restoreErrorTitle');
       alertMessage = translate('restoreErrorMessage');
+    }
+    // Hide alert depending on config
+    if (!error && showRestoreSuccessAlert == false) {
+      showAlert = false;
+    }
+    if (error && showRestoreErrorAlert == false) {
+      showAlert = false;
     }
     // Update state
     this.setState({isRestoreLoading: false});

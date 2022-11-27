@@ -94,6 +94,10 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 | defaultSelectedProductIndex | `Number` | Index of the product selected by default (0 by default) |
 | theme | `Object` | Theme object to customize the styles of the components (see style customization below) |
 | display | `String` | Orientation of the products for sale list (Possible values: 'horizontal', 'vertical') ('horizontal' by default) |
+| showBuySuccessAlert | `Boolean` | Show alert when a purchase is successful (true by default) |
+| showBuyErrorAlert | `Boolean` | Show alert when a purchase fails (true by default) |
+| showRestoreSuccessAlert | `Boolean` | Show alert when a restore is successful (true by default) |
+| showRestoreErrorAlert | `Boolean` | Show alert when a restore fails (true by default) |
 | onBuyStart | `Function` | Event triggered when the user clicks on the buy button (***product*** provided as argument) |
 | onBuyEnd | `Function` | Event triggered when the user purchase is done (***err***, ***transaction*** provided as arguments) |
 | onRestoreStart | `Function` | Event triggered when the user clicks on the restore button |
