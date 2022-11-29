@@ -45,6 +45,10 @@ import {IaphubDataProvider} from 'react-native-iaphub-ui';
 | allowAnonymousPurchase | `Boolean` | ***Optional***, if you want to allow purchases when the user isn't logged in (false by default) |
 | userTags | `Object` | ***Optional***, user tags |
 | deviceParams | `Object` | ***Optional***, device params |
+| i18n | `Object` |  ***Optional***, i18n data (if you want to provide your own translations) |
+| alert | `Function` |  ***Optional***, customize alert (React native Alert.alert by default) |
+| showBuySuccessAlert | `Boolean` |  ***Optional***, show alert when a purchase is successful (true by default) |
+| showBuyErrorAlert | `Boolean` |  ***Optional***, show alert when a purchase fails (true by default) |
 | onError | `Function` | ***Optional***, event triggered when an error occurs (***err*** provided as argument) |
 | onPurchase | `Function` | ***Optional***, event triggered when a purchase is successful (***transaction*** provided as argument) |
 
@@ -94,6 +98,7 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 | defaultSelectedProductIndex | `Number` | Index of the product selected by default (0 by default) |
 | theme | `Object` | Theme object to customize the styles of the components (see style customization below) |
 | display | `String` | Orientation of the products for sale list (Possible values: 'horizontal', 'vertical') ('horizontal' by default) |
+| alert | `Function` | Customize alert (React native Alert.alert by default) |
 | showBuySuccessAlert | `Boolean` | Show alert when a purchase is successful (true by default) |
 | showBuyErrorAlert | `Boolean` | Show alert when a purchase fails (true by default) |
 | showRestoreSuccessAlert | `Boolean` | Show alert when a restore is successful (true by default) |

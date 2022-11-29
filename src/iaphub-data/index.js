@@ -14,8 +14,17 @@ export default class IaphubData extends React.Component {
     userTags: PropTypes.object,
     deviceParams: PropTypes.object,
     allowAnonymousPurchase: PropTypes.bool,
+    i18n: PropTypes.object,
+    alert: PropTypes.func,
+    showBuySuccessAlert: PropTypes.bool,
+    showBuyErrorAlert: PropTypes.bool,
     onError: PropTypes.func,
     onPurchase: PropTypes.func
+	};
+
+  static defaultProps = {
+		showBuySuccessAlert: true,
+    showBuyErrorAlert: true
 	};
 
   constructor(props) {
@@ -76,7 +85,7 @@ export default class IaphubData extends React.Component {
       // Listen for buy request
       this.buyRequestListener = Iaphub.addEventListener('onBuyRequest', async (opts) => {
         try {
-          var transaction = await buyWithAlert(() => Iaphub.buy(opts.sku), this.props.lang);
+          var transaction = await buyWithAlert(() => Iaphub.buy(opts.sku), this.props.lang, this.props.i18n, this.props.showBuySuccessAlert, this.props.showBuyErrorAlert, this.props.alert);
           this.onPurchase(transaction);
         }
         catch(err) {

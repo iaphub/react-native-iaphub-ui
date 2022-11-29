@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Alert, ScrollView, Platform} from 'react-native';
 import withStyles from '../util/with-styles';
 import buyWithAlert from '../util/buy-with-alert';
-import getBuyAlertMessage from '../util/get-buy-alert-message';
+import showAlert from '../util/show-alert';
 import buildTranslate from '../i18n';
 
 class Paywall extends React.Component {
@@ -85,13 +85,13 @@ class Paywall extends React.Component {
 
   onBuy = async () => {
     var {isBuyLoading, isRestoreLoading, selectedProduct} = this.state;
-    var {onBuyStart, onBuyEnd, lang, i18n, showBuySuccessAlert, showBuyErrorAlert} = this.props;
+    var {onBuyStart, onBuyEnd, lang, i18n, showBuySuccessAlert, showBuyErrorAlert, alert} = this.props;
     var transaction = null;
 
     if (isBuyLoading || isRestoreLoading) return;
     this.setState({isBuyLoading: true});
     try {
-      transaction = await buyWithAlert(() => onBuyStart(selectedProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert);
+      transaction = await buyWithAlert(() => onBuyStart(selectedProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert, alert);
       onBuyEnd(null, transaction);
     }
     catch (err) {
@@ -111,13 +111,10 @@ class Paywall extends React.Component {
     var error = null;
     var alertTitle = translate('restoreSuccessTitle');
     var alertMessage = translate('restoreSuccessMessage');
-    var showAlert = true;
+    var displayAlert = true;
     // Start restore
     try {
-      var result = await onRestoreStart();
-      if (result === false) {
-        showAlert = false;
-      }
+      await onRestoreStart();
     }
     // Catch any error
     catch (err) {
@@ -127,21 +124,16 @@ class Paywall extends React.Component {
     }
     // Hide alert depending on config
     if (!error && showRestoreSuccessAlert == false) {
-      showAlert = false;
+      displayAlert = false;
     }
     if (error && showRestoreErrorAlert == false) {
-      showAlert = false;
+      displayAlert = false;
     }
     // Update state
     this.setState({isRestoreLoading: false});
     // Show alert
-    if (showAlert) {
-      Alert.alert(alertTitle, alertMessage, [
-        {
-          text: translate('ok'),
-          onPress: () => onRestoreEnd(error)
-        }
-      ]);
+    if (displayAlert) {
+      this.showAlert({title: alertTitle, description: alertMessage, button: translate('ok')});
     }
     else {
       onRestoreEnd(error);
@@ -154,15 +146,26 @@ class Paywall extends React.Component {
 
     // Show alert if the product is managed by a different platform
     if (product.platform != Platform.OS) {
-      Alert.alert(translate('manageSubscriptionsErrorTitleDifferentPlatform', product), translate('manageSubscriptionsErrorMessageDifferentPlatform', product), [
-        {
-          text: translate('ok')
-        }
-      ]);
+      this.showAlert({
+        title: translate('manageSubscriptionsErrorTitleDifferentPlatform', product),
+        description: translate('manageSubscriptionsErrorMessageDifferentPlatform', product),
+        button: translate('ok')
+      });
     }
     // Otherwise call the event
     else {
       onShowManageSubscriptions(product);
+    }
+  }
+
+  showAlert = async (opts) => {
+    var {alert} = this.props;
+
+    if (alert) {
+      await alert(opts);
+    }
+    else {
+      await showAlert(opts);
     }
   }
 

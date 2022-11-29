@@ -27,6 +27,7 @@ export default class PaywallWrapper extends React.Component {
 		defaultSelectedProductIndex: PropTypes.number,
 		theme: PropTypes.object,
 		display: PropTypes.oneOf(['vertical', 'horizontal']),
+		alert: PropTypes.func,
 		showBuySuccessAlert: PropTypes.bool,
 		showBuyErrorAlert: PropTypes.bool,
 		showRestoreSuccessAlert: PropTypes.bool,
