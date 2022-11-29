@@ -69,6 +69,7 @@ class Store {
           subscriptionDuration: "P1M",
           subscriptionIntroPhases: [],
           subscriptionState: 'active',
+          isSubscriptionRenewable: true,
           platform: 'android'
         }
       ];

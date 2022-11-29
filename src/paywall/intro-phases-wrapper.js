@@ -6,15 +6,15 @@ import buildTranslate from '../i18n';
 class IntroPhasesWrapper extends React.Component {
 
   render() {
-    var {styles, activeProduct, lang, i18n, IntroPhase} = this.props;
+    var {styles, selectedProduct, lang, i18n, IntroPhase} = this.props;
     var translate = buildTranslate('IntroPhasesWrapper', lang, i18n);
 
-    if (!activeProduct || !activeProduct.subscriptionIntroPhases || !activeProduct.subscriptionIntroPhases.length) return null;
+    if (!selectedProduct || !selectedProduct.subscriptionIntroPhases || !selectedProduct.subscriptionIntroPhases.length) return null;
     return (
       <View style={styles.root}>
         <Text style={styles.title}>{translate('title')}</Text>
         <View style={styles.phases}>
-          {activeProduct.subscriptionIntroPhases.map((phase, index) => (
+          {selectedProduct.subscriptionIntroPhases.map((phase, index) => (
             <IntroPhase {...this.props} introPhase={phase} key={index} styles={null} style={null}/>
           ))}
         </View>

@@ -5,14 +5,14 @@ import withStyles from '../util/with-styles';
 class ProductsWrapper extends React.Component {
 
   renderProducts() {
-    var {styles, productsForSale, Product, selectedIndex, ...props} = this.props;
+    var {styles, productsForSale, Product, selectedProductForSaleIndex, ...props} = this.props;
 
     return productsForSale.map((product, index) => (
       <Product
         key={product.id}
         product={product}
         index={index}
-        isSelected={index == selectedIndex}
+        isSelected={index == selectedProductForSaleIndex}
         productsForSale={productsForSale}
         {...props}/>
     ))

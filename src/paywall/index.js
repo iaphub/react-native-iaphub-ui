@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paywall from './paywall';
-import DefaultActiveSubscription from './active-subscription';
+import DefaultTouchableProduct from './touchable-product';
+import DefaultActiveProductsWrapper from './active-products-wrapper';
+import DefaultActiveProduct from './active-product';
 import DefaultProductsWrapper from './products-wrapper';
 import DefaultProduct from './product';
 import DefaultProductTitle from './product-title';
@@ -35,7 +37,8 @@ export default class PaywallWrapper extends React.Component {
 		onRestoreEnd: PropTypes.func,
 		onShowManageSubscriptions: PropTypes.func,
 		onRefreshProducts: PropTypes.func,
-		ActiveSubscription: PropTypes.func,
+		ActiveProductsWrapper: PropTypes.func,
+		ActiveProduct: PropTypes.func,
 		Product: PropTypes.func,
 		ProductTitle: PropTypes.func,
 		ProductPrice: PropTypes.func,
@@ -66,12 +69,14 @@ export default class PaywallWrapper extends React.Component {
 	};
 
   render() {
-		var {ActiveSubscription, ProductsWrapper, Product, ProductTitle, ProductPrice, ProductsError, IntroPhasesWrapper, IntroPhase, SubscriptionTerms, Restore, Buy, Loading, ...props} = this.props;
+		var {TouchableProduct, ActiveProductsWrapper, ActiveProduct, ProductsWrapper, Product, ProductTitle, ProductPrice, ProductsError, IntroPhasesWrapper, IntroPhase, SubscriptionTerms, Restore, Buy, Loading, ...props} = this.props;
 
     return (
 			<Paywall
 				{...props}
-				ActiveSubscription={(ActiveSubscription === undefined) ? DefaultActiveSubscription : ActiveSubscription}
+				TouchableProduct={(TouchableProduct === undefined) ? DefaultTouchableProduct : TouchableProduct}
+				ActiveProductsWrapper={(ActiveProductsWrapper === undefined) ? DefaultActiveProductsWrapper : ActiveProductsWrapper}
+				ActiveProduct={(ActiveProduct === undefined) ? DefaultActiveProduct : ActiveProduct}
 				ProductsWrapper={(ProductsWrapper === undefined) ? DefaultProductsWrapper : ProductsWrapper}
 				Product={(Product === undefined) ? DefaultProduct : Product}
 				ProductTitle={(ProductTitle === undefined) ? DefaultProductTitle : ProductTitle}

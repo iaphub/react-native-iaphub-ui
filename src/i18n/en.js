@@ -36,14 +36,15 @@ export default {
 		errorDifferentSubscriptionGroup: () => `Error: If you're selling multiple subscriptions, they must belong to the same subscription group.`
 	},
 	/*
-	 * ActiveSubscription component
+	 * ActiveProduct component
 	 */
-	ActiveSubscription: {
-		activeSubscription: () => `You have an active subscription.`,
-		subscriptionPaused: () => `You have a paused subscription.`,
-		subscriptionCannotBeRenewed: () => `The renewal of your subscription failed.\nUpdate your payment method to renew.`,
-		manage: () => `Manage`,
-		update: () => `Update`
+	ActiveProduct: {
+		activeProduct: () => `You have an active product`,
+		activeSubscription: () => `You have an active subscription`,
+		subscriptionPaused: () => `You have a paused subscription`,
+		subscriptionCannotBeRenewed: () => `The renewal of your subscription failed. Update your payment method to renew.`,
+		autoRenewalActive: () => `Auto-renewal active`,
+		autoRenewalDisabled: () => `Auto-renewal disabled`
 	},
 	/*
 	 * ProductsError component
@@ -124,6 +125,8 @@ export default {
 	 * Buy component
 	 */
 	Buy: {
-		continue: () => `Continue`
+		continue: () => `Continue`,
+		replaceSubscription: () => `Replace subscription`,
+		manageSubscription: () => `Manage subscription`
 	}
 }

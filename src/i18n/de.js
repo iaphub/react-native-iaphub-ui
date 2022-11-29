@@ -36,14 +36,15 @@ export default {
 		errorDifferentSubscriptionGroup: () => `Fehler: Wenn Sie mehrere Abonnements verkaufen, müssen diese zur selben Gruppe gehören.`
 	},
 	/*
-	 * ActiveSubscription component
+	 * ActiveProduct component
 	 */
-	ActiveSubscription: {
-		activeSubscription: () => `Sie haben ein aktives Abonnement.`,
-		subscriptionPaused: () => `Sie haben ein pausiertes Abonnement.`,
-		subscriptionCannotBeRenewed: () => `Ihre Abonnementverlängerung ist fehlgeschlagen.\nBitte aktualisieren Sie Ihre Zahlungsmethode.`,
-		manage: () => `Mehr Informationen`,
-		update: () => `Aktualisieren`
+	ActiveProduct: {
+		activeProduct: () => `Sie haben ein aktives Produkt`,
+		activeSubscription: () => `Sie haben ein aktives Abonnement`,
+		subscriptionPaused: () => `Sie haben ein pausiertes Abonnement`,
+		subscriptionCannotBeRenewed: () => `Ihre Abonnementverlängerung ist fehlgeschlagen. Bitte aktualisieren Sie Ihre Zahlungsmethode.`,
+		autoRenewalActive: () => `Automatische Erneuerung`,
+		autoRenewalDisabled: () => `Automatische Verlängerung deaktiviert`
 	},
 	/*
 	 * ProductsError component
@@ -124,6 +125,8 @@ export default {
 	 * Buy component
 	 */
 	Buy: {
-		continue: () => `Fortsetzen`
+		continue: () => `Fortsetzen`,
+		replaceSubscription: () => `Abonnement ersetzen`,
+		manageSubscription: () => `Abonnement verwalten`
 	}
 }

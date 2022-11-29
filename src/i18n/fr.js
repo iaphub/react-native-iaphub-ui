@@ -36,14 +36,15 @@ export default {
 		errorDifferentSubscriptionGroup: () => `Erreur: Si vous vendez plusieurs abonnements, ils doivent appartenir au même groupe.`
 	},
 	/*
-	 * ActiveSubscription component
+	 * ActiveProduct component
 	 */
-	ActiveSubscription: {
-		activeSubscription: () => `Vous avez un abonnement actif.`,
-		subscriptionPaused: () => `Vous avez un abonnement en pause.`,
-		subscriptionCannotBeRenewed: () => `Le renouvellement de votre abonnement a échoué.\nVeuillez mettre à jour votre méthode de paiement.`,
-		manage: () => `Modifier`,
-		update: () => `Mettre à jour`
+	ActiveProduct: {
+		activeProduct: () => `Vous avez un produit actif`,
+		activeSubscription: () => `Vous avez un abonnement actif`,
+		subscriptionPaused: () => `Vous avez un abonnement en pause`,
+		subscriptionCannotBeRenewed: () => `Le renouvellement de votre abonnement a échoué. Veuillez mettre à jour votre méthode de paiement.`,
+		autoRenewalActive: () => `Renouvellement automatique`,
+		autoRenewalDisabled: () => `Renouvellement automatique désactivé`
 	},
 	/*
 	 * ProductsError component
@@ -124,6 +125,8 @@ export default {
 	 * Buy component
 	 */
 	Buy: {
-		continue: () => `Continuer`
+		continue: () => `Continuer`,
+		replaceSubscription: () => `Replacer abonnement`,
+		manageSubscription: () => `Gérer abonnement`
 	}
 }

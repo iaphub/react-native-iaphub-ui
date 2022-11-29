@@ -27,7 +27,7 @@ class Restore extends React.Component {
 
 const styles = StyleSheet.create({
 	root: {
-    padding: 10
+    padding: 20
 	},
   content: {
     flexDirection: 'row',

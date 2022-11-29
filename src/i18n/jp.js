@@ -36,14 +36,15 @@ export default {
 		errorDifferentSubscriptionGroup: () => `エラー: 複数のサブスクリプションを販売している場合、それらは同じサブスクリプション グループに属している必要があります。`
 	},
 	/*
-	 * ActiveSubscription component
+	 * ActiveProduct component
 	 */
-	ActiveSubscription: {
+	ActiveProduct: {
+		activeProduct: () => `アクティブな製品があります`,
 		activeSubscription: () => `アクティブなサブスクリプションがあります。`,
 		subscriptionPaused: () => `サブスクリプションを一時停止しています。`,
-		subscriptionCannotBeRenewed: () => `サブスクリプションの更新に失敗しました。\nお支払い方法を更新して更新してください。`,
-		manage: () => `対処`,
-		update: () => `アップデート`
+		subscriptionCannotBeRenewed: () => `サブスクリプションの更新に失敗しました。お支払い方法を更新して更新してください。`,
+		autoRenewalActive: () => `自動更新`,
+		autoRenewalDisabled: () => `自動更新無効`
 	},
 	/*
 	 * ProductsError component
@@ -124,6 +125,8 @@ export default {
 	 * Buy component
 	 */
 	Buy: {
-		continue: () => `続行`
+		continue: () => `続行`,
+		replaceSubscription: () => `サブスクリプションを置き換える`,
+		manageSubscription: () => `サブスクリプションを管理する`
 	}
 }

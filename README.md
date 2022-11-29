@@ -122,7 +122,7 @@ import {IaphubDataConsumer, PaywallSubscriptionGroup} from 'react-native-iaphub-
 
 #### Preview of the component (the image and title isn't part of the component):
 
-<img height="400px" src="https://www.iaphub.com/img/github/github-iaphub-ui-group.png"/>
+<img height="400px" src="https://www.iaphub.com/img/github/github-iaphub-ui-group.png" height="400px"/>
 <br/>
 
 #### Properties of the component

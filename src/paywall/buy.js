@@ -11,15 +11,36 @@ class Buy extends React.Component {
 	};
 
   render() {
-    var {styles, onBuy, isBuyLoading, lang, i18n, activeProduct, activityIndicatorColor} = this.props;
-    var translate = buildTranslate('Buy', lang, i18n);
+    var {styles, onBuy, onShowManageSubscriptions, isBuyLoading, lang, i18n, selectedProduct, selectedActiveProductIndex, activeProducts, activityIndicatorColor} = this.props;
+		if (!selectedProduct) return null;
+		var translate = buildTranslate('Buy', lang, i18n);
+		var buttonText = translate('continue');
+		var onPress = onBuy;
+		var hideButton = false;
 
-		if (!activeProduct) return null;
+		// Check if it is an active product selected
+		if (selectedActiveProductIndex != null) {
+			// If the selected active product is a non-consumable or non-renewing subscription, do not show any button
+			if (["non_consumable", "subscription"].indexOf(selectedProduct.type) != -1) {
+				hideButton = true;
+			}
+			// Otherwise show the manage subscription button
+			buttonText = translate('manageSubscription');
+			onPress = onShowManageSubscriptions;
+		}
+		// Check if it is a product for sale replacing an existing subscription
+		else if (activeProducts && activeProducts.find((product) => product.group == selectedProduct.group)) {
+			buttonText = translate('replaceSubscription');
+		}
+
+		if (hideButton) {
+			return null;
+		}
     return (
 			<View style={styles.root}>
-				<Ripple onPress={() => onBuy && onBuy()}>
+				<Ripple onPress={() => onPress && onPress(selectedProduct)}>
 					<View style={styles.button}>
-						{!isBuyLoading && <Text style={styles.text}>{translate('continue')}</Text>}
+						{!isBuyLoading && <Text style={styles.text}>{buttonText}</Text>}
 						{isBuyLoading && <ActivityIndicator size="small" color={activityIndicatorColor} />}
 					</View>
 				</Ripple>

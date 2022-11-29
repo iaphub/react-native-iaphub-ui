@@ -8,19 +8,26 @@ import buildTranslate from '../i18n';
 class Paywall extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
-    if (state.productSelected == false) {
-      var activeProduct = null;
-      var selectedIndex = 0;
+    if (state.hasSelectedProduct == false) {
+      var selectedProduct = null;
+      var selectedProductForSaleIndex = 0;
+      var selectedActiveProductIndex = null;
 
       if (props.productsForSale && props.productsForSale.length > props.defaultSelectedProductIndex) {
-        selectedIndex = props.defaultSelectedProductIndex || 0;
-        activeProduct = props.productsForSale[selectedIndex];
+        selectedProductForSaleIndex = props.defaultSelectedProductIndex || 0;
+        selectedProduct = props.productsForSale[selectedProductForSaleIndex];
       }
-      if (!activeProduct && props.productsForSale && props.productsForSale.length >= 1) {
-        selectedIndex = 0;
-        activeProduct = props.productsForSale[0];
+      if (!selectedProduct && props.productsForSale && props.productsForSale.length >= 1) {
+        selectedProductForSaleIndex = 0;
+        selectedProduct = props.productsForSale[0];
       }
-      return {activeProduct : activeProduct, selectedIndex: selectedIndex};
+      if (props.activeProducts.length) {
+        selectedProductForSaleIndex = null;
+        selectedActiveProductIndex = 0;
+        selectedProduct = props.activeProducts[0];
+      }
+
+      return {selectedProduct : selectedProduct, selectedProductForSaleIndex: selectedProductForSaleIndex, selectedActiveProductIndex: selectedActiveProductIndex};
     }
     return null;
   }
@@ -28,21 +35,33 @@ class Paywall extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productSelected: false,
-      activeProduct: null,
-      selectedIndex: null,
+      selectedActiveProductIndex: null,
+      selectedProductForSaleIndex: null,
+      selectedProduct: null,
+      hasSelectedProduct: false,
       isBuyLoading: false,
       isRestoreLoading: false,
       isProductsRefreshing: false
     };
   }
 
-  onProductPress = (activeProduct, index) => {
+  onActiveProductPress = (product, index) => {
     if (this.state.isBuyLoading || this.state.isRestoreLoading) return;
     this.setState({
-      productSelected: true,
-      activeProduct: activeProduct,
-      selectedIndex: index
+      hasSelectedProduct: true,
+      selectedProduct: product,
+      selectedProductForSaleIndex: null,
+      selectedActiveProductIndex: index
+    });
+  }
+
+  onProductForSalePress = (product, index) => {
+    if (this.state.isBuyLoading || this.state.isRestoreLoading) return;
+    this.setState({
+      hasSelectedProduct: true,
+      selectedProduct: product,
+      selectedProductForSaleIndex: index,
+      selectedActiveProductIndex: null
     });
   }
 
@@ -65,14 +84,14 @@ class Paywall extends React.Component {
   }
 
   onBuy = async () => {
-    var {isBuyLoading, isRestoreLoading, activeProduct} = this.state;
+    var {isBuyLoading, isRestoreLoading, selectedProduct} = this.state;
     var {onBuyStart, onBuyEnd, lang, i18n, showBuySuccessAlert, showBuyErrorAlert} = this.props;
     var transaction = null;
 
     if (isBuyLoading || isRestoreLoading) return;
     this.setState({isBuyLoading: true});
     try {
-      transaction = await buyWithAlert(() => onBuyStart(activeProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert);
+      transaction = await buyWithAlert(() => onBuyStart(selectedProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert);
       onBuyEnd(null, transaction);
     }
     catch (err) {
@@ -147,12 +166,12 @@ class Paywall extends React.Component {
     }
   }
 
-  renderActiveSubscription = () => {
-    var {ActiveSubscription, style, styles, ...props} = this.props;
+  renderActiveProducts = () => {
+    var {ActiveProductsWrapper, style, styles, ...props} = this.props;
 
-    if (!ActiveSubscription) return null;
+    if (!ActiveProductsWrapper) return null;
     return (
-      <ActiveSubscription {...this.state} {...props} onShowManageSubscriptions={this.onShowManageSubscriptions}/>
+      <ActiveProductsWrapper onProductPress={this.onActiveProductPress} {...this.state} {...props}/>
     )
   }
 
@@ -161,7 +180,7 @@ class Paywall extends React.Component {
 
     if (!ProductsWrapper) return null;
     return (
-      <ProductsWrapper onProductPress={this.onProductPress} {...this.state} {...props}/>
+      <ProductsWrapper onProductPress={this.onProductForSalePress} {...this.state} {...props}/>
     )
   }
 
@@ -206,7 +225,7 @@ class Paywall extends React.Component {
 
     if (!Buy) return null;
     return (
-      <Buy {...this.state} {...props} onBuy={this.onBuy}/>
+      <Buy {...this.state} {...props} onBuy={this.onBuy} onShowManageSubscriptions={this.onShowManageSubscriptions}/>
     )
   }
 
@@ -220,12 +239,12 @@ class Paywall extends React.Component {
   }
 
   renderContent() {
-    var {productsForSale, err} = this.props;
+    var {productsForSale, activeProducts} = this.props;
 
     return (
       <ScrollView alwaysBounceVertical={false}>
-        {this.renderActiveSubscription()}
-        {(!productsForSale || !productsForSale.length) && this.renderProductsError()}
+        {this.renderActiveProducts()}
+        {(!productsForSale || !productsForSale.length) && (!activeProducts || !activeProducts.length) && this.renderProductsError()}
         {(productsForSale && productsForSale.length > 0) && this.renderProducts()}
         {this.renderIntroPhases()}
         {this.renderSubscriptionTerms()}

@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: 'black',
-    marginBottom: 5,
     textAlign: 'center'
   },
   // Style when the product is selected
