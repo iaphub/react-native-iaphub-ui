@@ -45,6 +45,10 @@ export default function(err, transaction, lang = 'en', i18n) {
       description = translate('buyErrorMessage');
     }
   }
+  else {
+    title = translate('buyErrorTitle');
+    description = translate('buyErrorMessage');
+  }
 
   if (!title || !description) {
     return false;
