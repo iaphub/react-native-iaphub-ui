@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import withStyles from '../util/with-styles';
-import style from '../util/style';
 
-class ProductSingle extends Component {
+class ProductContentSingleMonthlySubscription extends Component {
 
   render() {
     var {styles, ProductPricePerMonth} = this.props;
 
     return (
-      <View style={[styles.root]} >
+      <View style={styles.root} >
         {ProductPricePerMonth && <ProductPricePerMonth {...this.props} styles={{
           price: {fontSize: 22, fontWeight: 'bold'},
           delimiter: {fontSize: 18, marginLeft: 4, marginRight: 4},
@@ -30,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStyles(styles, 'ProductSingle')(ProductSingle);
+export default withStyles(styles, 'ProductContentSingleMonthlySubscription')(ProductContentSingleMonthlySubscription);

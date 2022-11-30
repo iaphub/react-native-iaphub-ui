@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
 import {StyleSheet, Platform} from 'react-native';
-import Ripple from 'react-native-material-ripple';
 import withStyles from '../util/with-styles';
-import style from '../util/style';
 
 class Product extends Component {
 
   render() {
-    var {product, index, onProductPress, isSelected, styles, ProductContentSingleMonthlySubscription, ProductContent, productsForSale} = this.props;
+    var {product, index, onProductPress, styles, TouchableProduct, ProductContentSingleMonthlySubscription, ProductContent, productsForSale} = this.props;
     var isSingle = productsForSale.length == 1 && product.subscriptionDuration == "P1M";
 
     return (
-      <Ripple style={[styles.root, style(styles.selectedRoot, isSelected)]} onPress={() => onProductPress(product, index)}>
+      <TouchableProduct {...this.props} styles={null} style={styles.root} onPress={() => onProductPress(product, index)}>
         {isSingle ? <ProductContentSingleMonthlySubscription {...this.props} styles={null}/> : <ProductContent {...this.props} styles={null}/>}
-      </Ripple>
+      </TouchableProduct>
     );
   }
 
@@ -24,26 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginHorizontal: 5,
-    marginTop: 10,
-    backgroundColor: 'white',
-    borderRadius: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        shadowOpacity: 1,
-        shadowRadius: 2,
-        shadowOffset: {height: 1, width: 1},
-        shadowColor: '#000000'
-      },
-      android: {
-        elevation: 2
-      }
-    })
-  },
-  // Style when the product is selected
-  selectedRoot: {
-    backgroundColor: '#0294FF'
+    marginTop: 10
   }
 });
 
