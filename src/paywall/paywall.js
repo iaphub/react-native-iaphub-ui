@@ -92,10 +92,10 @@ class Paywall extends React.Component {
     this.setState({isBuyLoading: true});
     try {
       transaction = await buyWithAlert(() => onBuyStart(selectedProduct), lang, i18n, showBuySuccessAlert, showBuyErrorAlert, alert);
-      onBuyEnd(null, transaction);
+      onBuyEnd(null, transaction, selectedProduct);
     }
     catch (err) {
-      onBuyEnd(err, null);
+      onBuyEnd(err, null, selectedProduct);
     }
     // Update state
     this.setState({isBuyLoading: false});
