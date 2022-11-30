@@ -8,6 +8,7 @@ class ProductTitle extends Component {
 
   render() {
     var {product, isSelected, styles, lang, i18n} = this.props;
+    if (!product.subscriptionDuration) return null;
     var duration = getSubscriptionDuration(product.subscriptionDuration, 1, false, lang, i18n);
     var durationCount = duration ? duration.split(" ")[0] : "";
     var durationUnit = duration ? duration.split(" ")[1] : "";

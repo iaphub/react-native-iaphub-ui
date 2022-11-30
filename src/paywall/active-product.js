@@ -25,9 +25,11 @@ class ActiveProduct extends Component {
     }
     return (
       <TouchableProduct style={styles.root} isSelected={isSelected} onPress={() => onPress(product, index)}>
-        <View style={[styles.title, style(styles.selectedTitle, isSelected)]}>
-          <ProductTitle {...this.props} styles={null}/>
-        </View>
+        {product.platform == Platform.OS &&
+          <View style={[styles.title, style(styles.selectedTitle, isSelected)]}>
+            <ProductTitle {...this.props} styles={null}/>
+          </View>
+        }
         <View style={styles.description}>
           <Text style={[styles.descriptionText, style(styles.selectedDescriptionText, isSelected)]}>
             {text}
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
   },
   title: {
     width: 120,
-    padding: 5,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.15)'
