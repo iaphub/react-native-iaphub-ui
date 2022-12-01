@@ -1,6 +1,6 @@
 {
   "name": "react-native-iaphub-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Plug & Play react native component for in-app purchase, includes a beautiful Paywall with the content translated in 6 languages",
   "main": "src/index.js",
   "license": "MIT",
