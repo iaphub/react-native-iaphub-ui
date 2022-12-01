@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStyles(styles)(Restore);
+export default withStyles(styles, 'Restore')(Restore);

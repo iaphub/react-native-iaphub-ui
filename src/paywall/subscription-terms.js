@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStyles(styles)(SubscriptionTerms);
+export default withStyles(styles, 'SubscriptionTerms')(SubscriptionTerms);
