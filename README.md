@@ -102,6 +102,7 @@ import {IaphubDataConsumer, Paywall} from 'react-native-iaphub-ui';
 | showBuySuccessAlert | `Boolean` | Show alert when a purchase is successful (true by default) |
 | showBuyErrorAlert | `Boolean` | Show alert when a purchase fails (true by default) |
 | showRestoreSuccessAlert | `Boolean` | Show alert when a restore is successful (true by default) |
+| showRestoreEmptyAlert | `Boolean` | Show alert when a restore didn't detect any transactions to restore (true by default) |
 | showRestoreErrorAlert | `Boolean` | Show alert when a restore fails (true by default) |
 | onBuyStart | `Function` | Event triggered when the user clicks on the buy button (***product*** provided as argument) |
 | onBuyEnd | `Function` | Event triggered when the user purchase is done (***err***, ***transaction*** provided as arguments) |

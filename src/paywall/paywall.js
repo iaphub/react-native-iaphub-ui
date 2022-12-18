@@ -103,7 +103,7 @@ class Paywall extends React.Component {
 
   onRestore = async () => {
     var {isBuyLoading, isRestoreLoading} = this.state;
-    var {onRestoreStart, onRestoreEnd, lang, i18n, showRestoreSuccessAlert, showRestoreErrorAlert} = this.props;
+    var {onRestoreStart, onRestoreEnd, lang, i18n, showRestoreSuccessAlert, showRestoreEmptyAlert, showRestoreErrorAlert} = this.props;
     var translate = buildTranslate('Paywall', lang, i18n);
 
     if (isBuyLoading || isRestoreLoading) return;
@@ -112,9 +112,15 @@ class Paywall extends React.Component {
     var alertTitle = translate('restoreSuccessTitle');
     var alertMessage = translate('restoreSuccessMessage');
     var displayAlert = true;
+    var response = null;
+    var isEmptyRestore = false;
     // Start restore
     try {
-      await onRestoreStart();
+      response = await onRestoreStart();
+      if (response && response.newPurchases && !response.newPurchases.length && response.transferredActiveProducts && !response.transferredActiveProducts.length) {
+        alertMessage = translate('restoreEmptyMessage');
+        isEmptyRestore = true;
+      }
     }
     // Catch any error
     catch (err) {
@@ -123,21 +129,27 @@ class Paywall extends React.Component {
       alertMessage = translate('restoreErrorMessage');
     }
     // Hide alert depending on config
-    if (!error && showRestoreSuccessAlert == false) {
-      displayAlert = false;
+    if (isEmptyRestore) {
+      if (showRestoreEmptyAlert == false) {
+        displayAlert = false;
+      }
     }
-    if (error && showRestoreErrorAlert == false) {
-      displayAlert = false;
+    else {
+      if (!error && showRestoreSuccessAlert == false) {
+        displayAlert = false;
+      }
+      if (error && showRestoreErrorAlert == false) {
+        displayAlert = false;
+      }
     }
     // Update state
     this.setState({isRestoreLoading: false});
     // Show alert
     if (displayAlert) {
-      this.showAlert({title: alertTitle, description: alertMessage, button: translate('ok')});
+      await this.showAlert({title: alertTitle, description: alertMessage, button: translate('ok')});
     }
-    else {
-      onRestoreEnd(error);
-    }
+    // Call restore end
+    onRestoreEnd(error, response);
   }
 
   onShowManageSubscriptions = async (product) => {

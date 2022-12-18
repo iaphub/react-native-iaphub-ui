@@ -5,6 +5,7 @@ export default {
 	Paywall: {
 		restoreSuccessTitle: () => `Wiederherstellung`,
 		restoreSuccessMessage: () => `Ihre Einkäufe wurden erfolgreich wiederhergestellt.`,
+		restoreEmptyMessage: () => `Keine zu wiederherstellenden Einkäufe wurden festgestellt`,
 		restoreErrorTitle: () => `Wiederherstellung`,
 		restoreErrorMessage: () => `Die Wiederherstellung Ihrer Einkäufe ist fehlgeschlagen.`,
 		buySuccessTitle: () => `Kauf getätigt`,

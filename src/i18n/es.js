@@ -5,6 +5,7 @@ export default {
 	Paywall: {
 		restoreSuccessTitle: () => `Restaurado con éxito`,
 		restoreSuccessMessage: () => `¡Tus compras se han restaurado correctamente!`,
+		restoreEmptyMessage: () => `No se han detectado compras para restaurar`,
 		restoreErrorTitle: () => `Error al restaurar`,
 		restoreErrorMessage: () => `No hemos podido restaurar tus compras. Inténtalo de nuevo más tarde.`,
 		buySuccessTitle: () => `Compra realizada correctamente`,

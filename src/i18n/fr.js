@@ -5,6 +5,7 @@ export default {
 	Paywall: {
 		restoreSuccessTitle: () => `Restauration`,
 		restoreSuccessMessage: () => `Vos achats ont été restaurés avec succès!`,
+		restoreEmptyMessage: () => `Aucun achat à restaurer n'a été détecté`,
 		restoreErrorTitle: () => `Restauration`,
 		restoreErrorMessage: () => `La restauration de vos achats a échoué`,
 		buySuccessTitle: () => `Achat effectué`,

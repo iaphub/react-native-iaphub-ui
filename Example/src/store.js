@@ -44,7 +44,9 @@ class Store {
   }
 
   async restore() {
-    await Iaphub.restore();
+    var response = await Iaphub.restore();
+
+    return response;
   }
 
   async showManageSubscriptions(sku = null) {

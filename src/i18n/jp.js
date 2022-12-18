@@ -5,6 +5,7 @@ export default {
 	Paywall: {
 		restoreSuccessTitle: () => `正常に復元されました`,
 		restoreSuccessMessage: () => `購入が正常に復元されました。`,
+		restoreEmptyMessage: () => `復元する購入は検出されていません`,
 		restoreErrorTitle: () => `復元に失敗しました`,
 		restoreErrorMessage: () => `購入を復元できませんでした。しばらくしてからもう一度お試しください。`,
 		buySuccessTitle: () => `正常に購入できました`,
