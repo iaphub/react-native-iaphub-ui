@@ -4,6 +4,7 @@ import es from './es';
 import jp from './jp';
 import pt from './pt';
 import de from './de';
+import it from './it';
 
 const dictionary = {
 	en: en,
@@ -11,7 +12,8 @@ const dictionary = {
 	es: es,
 	jp: jp,
 	pt: pt,
-	de: de
+	de: de,
+	it: it
 };
 
 export default (componentName, locale, data) => {
