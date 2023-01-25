@@ -113,13 +113,13 @@ export default {
 	 * SubscriptionTerms component
 	 */
 	SubscriptionTerms: {
-		subscriptionTermsTitle: () => `Fatturazione ricorrente.\nPuoi annullare in qualsiasi momento.`,
+		subscriptionTermsTitle: () => `Fatturazione ricorrente. Annulla in qualsiasi momento.`,
 		subscriptionTermsDescription: (opts) => {
-      if (opts.platform == 'android') {
-        return `Toccando Continua, verrà addebitato il pagamento sul Play Store e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dal Play Store.`;
-      }
-      return `Toccando Continua, verrà addebitato il pagamento sull'${opts.store} e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dall'${opts.store}`;
-    }
+            if (opts.platform == 'android') {
+                return `Toccando Continua, verrà addebitato il pagamento sul Play Store e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dal Play Store.`;
+            }
+            return `Toccando Continua, verrà addebitato il pagamento sull'${opts.store} e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dall'${opts.store}`;
+        }
 	},
 	/*
 	 * Restore component
