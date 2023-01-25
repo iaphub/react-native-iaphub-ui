@@ -15,7 +15,7 @@ class IntroPhasesWrapper extends React.Component {
         <Text style={styles.title}>{translate('title')}</Text>
         <View style={styles.phases}>
           {selectedProduct.subscriptionIntroPhases.map((phase, index) => (
-            <IntroPhase {...this.props} introPhase={phase} key={index} styles={null} style={null}/>
+            <IntroPhase {...this.props} introPhase={phase} key={index} index={index} styles={null} style={null}/>
           ))}
         </View>
       </View>

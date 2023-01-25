@@ -23,11 +23,11 @@ class IntroPhase extends React.Component {
   }
 
   render() {
-    var {styles, key, introPhase} = this.props;
+    var {styles, key, index, introPhase} = this.props;
 
     if (!introPhase) return null;
     return (
-      <View style={styles.root} key={key}>
+      <View style={[styles.root, (index == 0) ? {maxWidth: 200} : {}]} key={key}>
         <Text style={styles.text}>{this.getPhaseText()}</Text>
       </View>
     );
