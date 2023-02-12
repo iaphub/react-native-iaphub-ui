@@ -7,7 +7,7 @@ import buildTranslate from '../i18n';
 class ActiveProduct extends Component {
 
   render() {
-    var {styles, lang, i18n, product, index, isSelected, onPress, TouchableProduct, ProductTitle} = this.props;
+    var {styles, theme, lang, i18n, product, index, isSelected, onPress, TouchableProduct, ProductTitle} = this.props;
     var translate = buildTranslate('ActiveProduct', lang, i18n);
     var text = (product.type.indexOf("subscription") != -1) ? translate('activeSubscription') : translate('activeProduct');
     var showAutoRenewal = false;
@@ -24,7 +24,7 @@ class ActiveProduct extends Component {
       showAutoRenewal = false;
     }
     return (
-      <TouchableProduct style={styles.root} isSelected={isSelected} onPress={() => onPress(product, index)}>
+      <TouchableProduct style={styles.root} theme={theme} isSelected={isSelected} onPress={() => onPress(product, index)}>
         {product.platform == Platform.OS &&
           <View style={[styles.title, style(styles.selectedTitle, isSelected)]}>
             <ProductTitle {...this.props} styles={null}/>
@@ -89,9 +89,6 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   // Style when the subscription is selected
-  selectedRoot: {
-    backgroundColor: '#0294FF'
-  },
   selectedDescriptionText: {
     color: 'white'
   },
