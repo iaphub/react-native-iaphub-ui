@@ -53,6 +53,7 @@ export default {
 	ProductsError: {
 		noProducts: () => `Kein Produkt im Angebot, bitte versuchen Sie es später.`,
 		billingUnavailable: () => `Einkäufe werden derzeit auf Ihrem Telefon nicht unterstützt. Bitte versuchen Sie es später.`,
+		playStoreOutdated: () => `Das Abrechnungssystem ist derzeit nicht verfügbar. Ihre Play Store-App ist veraltet. Bitte aktualisieren Sie sie und versuchen Sie es erneut.`,
 		networkError: () => `Netzwerkfehler, bitte versuchen Sie es später erneut.`,
 		tryAgain: () => `Versuchen Sie es nochmal`
 	},

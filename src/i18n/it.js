@@ -53,6 +53,7 @@ export default {
 	ProductsError: {
     noProducts: () => `Nessun prodotto in vendita, riprova più tardi.`,
     billingUnavailable: () => `Sistema di fatturazione attualmente non disponibile sul tuo dispositivo, riprova più tardi.`,
+		playStoreOutdated: () => `Il sistema di fatturazione non è al momento disponibile. La tua app Play Store è obsoleta. Si prega di aggiornarla e riprovare.`,
     networkError: () => `Errore di rete, riprova più tardi.`,
     tryAgain: () => `Riprova`
 	},

@@ -18,6 +18,9 @@ class ProductsError extends React.Component {
 
     if (errCode == "billing_unavailable") {
       description = translate('billingUnavailable');
+      if (typeof err == "object" && err.subcode == "play_store_outdated") {
+        description = translate('playStoreOutdated');
+      }
     }
     else if (errCode) {
       description = translate('networkError');

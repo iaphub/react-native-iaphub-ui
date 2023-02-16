@@ -254,12 +254,12 @@ class Paywall extends React.Component {
   }
 
   renderContent() {
-    var {productsForSale, activeProducts} = this.props;
+    var {productsForSale, activeProducts, err} = this.props;
 
     return (
       <ScrollView alwaysBounceVertical={false}>
         {this.renderActiveProducts()}
-        {(!productsForSale || !productsForSale.length) && (!activeProducts || !activeProducts.length) && this.renderProductsError()}
+        {(!productsForSale || !productsForSale.length) && (!activeProducts || !activeProducts.length || err) && this.renderProductsError()}
         {(productsForSale && productsForSale.length > 0) && this.renderProducts()}
         {this.renderIntroPhases()}
         {this.renderSubscriptionTerms()}

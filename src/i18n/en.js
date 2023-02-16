@@ -53,6 +53,7 @@ export default {
 	ProductsError: {
 		noProducts: () => `No products for sale, please try again later.`,
 		billingUnavailable: () => `Billing system currently unavailable on your device, please try again later.`,
+		playStoreOutdated: () => `The billing system is currently unavailable. Your Play Store app is outdated, please update it and try again.`,
 		networkError: () => `Network error, please try again later.`,
 		tryAgain: () => `Try again`
 	},
