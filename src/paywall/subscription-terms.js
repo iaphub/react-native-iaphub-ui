@@ -14,13 +14,15 @@ class SubscriptionTerms extends React.Component {
     if (selectedProduct.type != "renewable_subscription") return null;
     // Do not display the terms if it is for an active product
     if (selectedActiveProductIndex != null) return null;
-    // Do not display the terms if the selected product is a subscription to be replaced
-    if (activeProducts.find((product) => product.group == selectedProduct.group)) return null;
 
-    var store = (Platform.OS == 'android') ? "Play Store" : "App Store";
-    var title = translate('subscriptionTermsTitle', {platform: Platform.OS, store: store});
-    var description = translate('subscriptionTermsDescription', {platform: Platform.OS, store: store});
+    var title = translate('subscriptionTermsTitle', {platform: Platform.OS});
+    var description = translate('subscriptionTermsDescription', {platform: Platform.OS});
+    var hasFreeTrial = selectedProduct.subscriptionIntroPhases && selectedProduct.subscriptionIntroPhases.length && selectedProduct.subscriptionIntroPhases[0].type == "trial";
 
+    if (hasFreeTrial) {
+      title = translate('subscriptionTermsFreeTrialTitle', {platform: Platform.OS});
+      description = translate('subscriptionTermsFreeTrialDescription', {platform: Platform.OS});
+    }
     return (
 			<View style={styles.root}>
 				{(title && title != "") && <Text style={styles.title}>{title}</Text>}
@@ -41,10 +43,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     color: 'white',
-    marginBottom: 2,
     textAlign: 'center'
   },
   description: {
+    marginTop: 5,
     fontSize: 13,
     color: 'white',
     textAlign: 'center'

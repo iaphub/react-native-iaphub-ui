@@ -115,11 +115,23 @@ export default {
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `Fatturazione ricorrente. Annulla in qualsiasi momento.`,
 		subscriptionTermsDescription: (opts) => {
-            if (opts.platform == 'android') {
-                return `Confermando, verrà addebitato il pagamento sul Play Store e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dal Play Store.`;
-            }
-            return `Confermando, verrà addebitato il pagamento sull'${opts.store} e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annullerai in qualsiasi momento dall'${opts.store}`;
-        }
+			if (opts.platform == 'android') {
+					return `La tua iscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annulli in qualsiasi momento dal Play Store.`;
+			}
+			return `La tua iscrizione si rinnoverà automaticamente allo stesso prezzo e durata fino a quando non la annulli in qualsiasi momento dall'App Store.`;
+		},
+    subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `Non verrai addebitato durante il periodo di prova gratuito. Puoi annullare in qualsiasi momento dal Play Store.`;
+			}
+			return `Non verrai addebitato durante il periodo di prova gratuito. Puoi annullare in qualsiasi momento dall'App Store.`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Il pagamento verrà effettuato solo al termine del periodo di prova gratuito e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e per la stessa durata fino a quando non annullerai la sottoscrizione in qualsiasi momento dal Play Store.`;
+			}
+			return `Il pagamento verrà effettuato solo al termine del periodo di prova gratuito e la tua sottoscrizione si rinnoverà automaticamente allo stesso prezzo e per la stessa durata fino a quando non annullerai la sottoscrizione in qualsiasi momento dall'App Store.`;
+		}
 	},
 	/*
 	 * Restore component

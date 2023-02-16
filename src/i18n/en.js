@@ -114,7 +114,24 @@ export default {
 	 */
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `Recurring billing. Cancel anytime.`,
-		subscriptionTermsDescription: (opts) => `By tapping Continue, your ${opts.store} payment will be charged and your subscription will auto-renew for the same price and duration until you cancel at any time from the ${opts.store}.`
+		subscriptionTermsDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Your subscription will auto-renew for the same price and duration until you cancel at any time from the Play Store.`;
+			}
+			return `Your subscription will auto-renew for the same price and duration until you cancel at any time from the App Store.`;
+		},
+		subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `You won't be charged during the free trial period.\nCancel at any time from the Play Store.`;
+			}
+			return `You won't be charged during the free trial period.\nCancel at any time from the App Store.`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `The payment will only be initiated after your free trial period ends and your subscription will auto-renew for the same price and duration until you cancel at any time from the Play Store.`;
+			}
+			return `The payment will only be initiated after your free trial period ends and your subscription will auto-renew for the same price and duration until you cancel at any time from the App Store.`;
+		}
 	},
 	/*
 	 * Restore component

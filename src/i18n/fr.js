@@ -114,7 +114,24 @@ export default {
 	 */
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `Achat récurrent. Annulez à tout moment.`,
-		subscriptionTermsDescription: (opts) => `En cliquant sur Continuer, votre paiement sera effectué avec l'${opts.store} et votre abonnement se renouvellera automatiquement au même prix et à la même durée jusqu'à ce que vous l'annuliez à tout moment depuis l'${opts.store}.`
+		subscriptionTermsDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Votre abonnement se renouvellera automatiquement pour le même prix et la même durée jusqu'à ce que vous l'annuliez à tout moment depuis le Play Store.`;
+			}
+			return `Votre abonnement se renouvellera automatiquement pour le même prix et la même durée jusqu'à ce que vous l'annuliez à tout moment depuis l'App Store.`;
+		},
+		subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `Vous ne serez pas facturé pendant la période d'essai gratuite. Annulez à tout moment depuis le Google Play Store.`;
+			}
+			return `Vous ne serez pas facturé pendant la période d'essai gratuite. Annulez à tout moment depuis l'App Store.`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Le paiement ne sera initié qu'après la fin de votre période d'essai gratuite, et votre abonnement sera renouvelé automatiquement pour le même prix et la même durée jusqu'à ce que vous l'annuliez à tout moment depuis le Google Play Store.`;
+			}
+			return `Le paiement ne sera initié qu'après la fin de votre période d'essai gratuite, et votre abonnement sera renouvelé automatiquement pour le même prix et la même durée jusqu'à ce que vous l'annuliez à tout moment depuis l'App Store.`;
+		}
 	},
 	/*
 	 * Restore component

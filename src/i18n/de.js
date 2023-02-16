@@ -114,7 +114,24 @@ export default {
 	 */
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `Wiederkerender Kauf, jederzeit kündbar.`,
-		subscriptionTermsDescription: (opts) => `Wenn Sie auf „Weiter“ klicken, wird Ihre Zahlung im ${opts.store} ausgeführt und Ihr Abonnement verlängert sich zum gleichen Preis und für die gleiche Dauer. Sie können es jederzeit im ${opts.store} kündigen.`
+		subscriptionTermsDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Ihr Abonnement wird automatisch zum gleichen Preis und für die gleiche Dauer verlängert, bis Sie es jederzeit im Play Store kündigen.`;
+			}
+			return `Ihr Abonnement wird automatisch zum gleichen Preis und für die gleiche Dauer verlängert, bis Sie es jederzeit im App Store kündigen.`;
+		},
+		subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `Während des kostenlosen Testzeitraums wird keine Gebühr erhoben. Jederzeit über den Play Store kündbar.`;
+			}
+			return `Während des kostenlosen Testzeitraums wird keine Gebühr erhoben. Jederzeit über den App Store kündbar.`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Die Zahlung wird erst nach Ablauf Ihres kostenlosen Testzeitraums eingeleitet und Ihr Abonnement wird automatisch zum gleichen Preis und für die gleiche Dauer verlängert, bis Sie es jederzeit im Play Store kündigen.`;
+			}
+			return `Die Zahlung wird erst nach Ablauf Ihres kostenlosen Testzeitraums eingeleitet und Ihr Abonnement wird automatisch zum gleichen Preis und für die gleiche Dauer verlängert, bis Sie es jederzeit im App Store kündigen.`;
+		}
 	},
 	/*
 	 * Restore component

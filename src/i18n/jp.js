@@ -114,7 +114,24 @@ export default {
 	 */
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `定期請求。いつでもキャンセルできます。`,
-		subscriptionTermsDescription: (opts) => `[続行] をタップすると、${opts.store} での支払いが請求され、サブスクリプションは、${opts.store} からいつでもキャンセルしない限り、同じ価格と期間で自動更新されます。`
+		subscriptionTermsDescription: (opts) => {
+			if (opts.platform == 'android') {
+					return `Playストアからいつでもキャンセルできるまで、同じ価格と期間で自動更新されます。`;
+			}
+			return `App Store からいつでもキャンセルできるまで、同じ価格と期間で自動更新されます。`;
+		},
+		subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `無料トライアル期間中には料金はかかりません。\nGoogle Playからいつでもキャンセルできます。`;
+			}
+			return `無料トライアル期間中には料金はかかりません。\nApp Storeからいつでもキャンセルできます。`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `無料トライアル期間が終了した後にのみ支払いが開始され、サブスクリプションは同じ価格と期間で自動更新され、Google Playからいつでもキャンセルするまで継続されます。`;
+			}
+			return `無料トライアル期間が終了した後にのみ支払いが開始され、サブスクリプションは同じ価格と期間で自動更新され、App Storeからいつでもキャンセルするまで継続されます。`;
+		}
 	},
 	/*
 	 * Restore component

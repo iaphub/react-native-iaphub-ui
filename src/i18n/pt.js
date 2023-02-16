@@ -114,7 +114,24 @@ export default {
 	 */
 	SubscriptionTerms: {
 		subscriptionTermsTitle: () => `Faturação recorrente. Cancele a qualquer momento.`,
-		subscriptionTermsDescription: (opts) => `Ao tocar em Continuar, o pagamento da sua ${opts.store} será cobrado e a sua subscrição será autorrenovada pelo mesmo preço e duração, até que cancele a qualquer momento, a partir da ${opts.store}.`
+		subscriptionTermsDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `Sua assinatura será renovada automaticamente pelo mesmo preço e duração até que você cancele a qualquer momento na Play Store.`;
+			}
+			return `Sua assinatura será renovada automaticamente pelo mesmo preço e duração até que você cancele a qualquer momento na App Store.`;
+		},
+		subscriptionTermsFreeTrialTitle: (opts) => {
+			if (opts.platform == 'android') {
+				return `Você não será cobrado durante o período de teste gratuito. Cancelável a qualquer momento na Play Store.`;
+			}
+			return `Você não será cobrado durante o período de teste gratuito. Cancelável a qualquer momento na App Store.`;
+		},
+		subscriptionTermsFreeTrialDescription: (opts) => {
+			if (opts.platform == 'android') {
+				return `O pagamento só será iniciado após o término do período de teste gratuito e sua assinatura será renovada automaticamente pelo mesmo preço e duração até que você cancele a qualquer momento na Play Store.`;
+			}
+			return `O pagamento só será iniciado após o término do período de teste gratuito e sua assinatura será renovada automaticamente pelo mesmo preço e duração até que você cancele a qualquer momento na App Store.`;
+		}
 	},
 	/*
 	 * Restore component
