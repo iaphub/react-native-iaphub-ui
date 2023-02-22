@@ -22,6 +22,7 @@ export default {
 		buyErrorMessageTransactionNotFound: () => `Não nos foi possível processar a sua compra, tente novamente mais tarde.`,
 		buyErrorMessageNetworkError: () => `Erro de rede, tente novamente mais tarde.`,
 		buyErrorMessageBillingUnavailable: () => `Sistema de faturação atualmente indisponível no seu dispositivo, tente novamente mais tarde.`,
+		buyErrorMessagePlayStoreOutdated: () => `O sistema de faturamento não está disponível no momento. Seu aplicativo da Play Store está desatualizado, por favor atualize-o e tente novamente.`,
 		buyErrorMessageCrossPlatformConflict: (opts) => `Parece que já tem uma subscrição numa plataforma diferente (${opts.platform}). Por favor utilize a mesma plataforma para alterar a sua subscrição ou espere que a sua subscrição atual expire.`,
 		buyErrorMessageProductAlreadyPurchased: () => `Já possui este produto. Se não tiver acesso ao produto, restaure as suas compras.`,
 		buyErrorMessageUserConflict: () => `Este produto pertence a um utilizador diferente. Por favor utilize a conta com a qual comprou originalmente o produto ou restaure as suas compras.`,

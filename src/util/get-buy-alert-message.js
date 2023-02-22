@@ -35,6 +35,10 @@ export default function(err, transaction, lang = 'en', i18n) {
       title = translate('buyDeferredPaymentTitle');
       description = translate('buyDeferredPaymentMessage');
     }
+    else if (err.code == "billing_unavailable" && err.subcode == "play_store_outdated") {
+      title = translate('buyErrorTitle');
+      description = translate('buyErrorMessagePlayStoreOutdated');
+    }
     else if (['receipt_failed', 'product_not_available', 'anonymous_purchase_not_allowed', 'transaction_not_found', 'network_error', 'billing_unavailable', 'cross_platform_conflict', 'product_already_purchased', 'user_conflict', 'product_change_next_renewal'].indexOf(err.code) != -1) {
       var camelCaseCode = err.code.replace(/_([a-z])/g, (g) => g[1].toUpperCase()).replace(/^./, str => str.toUpperCase());
       title = translate('buyErrorTitle');

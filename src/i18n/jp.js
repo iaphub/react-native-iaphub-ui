@@ -22,6 +22,7 @@ export default {
 		buyErrorMessageTransactionNotFound: () => `購入を処理できませんでした。しばらくしてからもう一度お試しください。`,
 		buyErrorMessageNetworkError: () => `ネットワーク エラーです。後でもう一度お試しください。`,
 		buyErrorMessageBillingUnavailable: () => `お使いのデバイスでは課金システムを現在ご利用いただけません。しばらくしてからもう一度お試しください。`,
+		buyErrorMessagePlayStoreOutdated: () => `請求システムは現在利用できません。プレイストアアプリが古いため、更新してから再試行してください。`,
 		buyErrorMessageCrossPlatformConflict: (opts) => `既に別のプラットフォーム (${opts.platform}) でサブスクリプションをお持ちのようです。同じプラットフォームを使用してサブスクリプションを変更するか、現在のサブスクリプションが期限切れになるまでお待ちください。`,
 		buyErrorMessageProductAlreadyPurchased: () => `商品は既に所有されています。製品にアクセスできない場合は、購入を復元してください。`,
 		buyErrorMessageUserConflict: () => `商品が別のユーザーに所有されています。最初に製品を購入したアカウントを使用するか、購入を復元してください。`,

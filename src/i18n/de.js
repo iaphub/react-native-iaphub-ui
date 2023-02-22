@@ -22,6 +22,7 @@ export default {
 		buyErrorMessageTransactionNotFound: () => `Ihre Zahlung ist fehlgeschlagen. Bitte versuchen Sie es später.`,
 		buyErrorMessageNetworkError: () => `Netzwerkfehler, bitte versuchen Sie es später erneut.`,
 		buyErrorMessageBillingUnavailable: () => `Einkäufe werden derzeit auf Ihrem Telefon nicht unterstützt. Bitte versuchen Sie es später.`,
+		buyErrorMessagePlayStoreOutdated: () => `Das Abrechnungssystem ist derzeit nicht verfügbar. Ihre Play Store-App ist veraltet. Bitte aktualisieren Sie sie und versuchen Sie es erneut.`,
 		buyErrorMessageCrossPlatformConflict: (opts) => `Anscheinend haben Sie bereits ein aktives Abonnement auf einer anderen Plattform (${opts.platform}), bitte verwenden Sie dieselbe Plattform, um Ihr Abonnement zu ändern, oder warten Sie, bis es abläuft`,
 		buyErrorMessageProductAlreadyPurchased: () => `Kauf bereits getätigt Wenn Sie keinen Zugriff auf das Produkt haben, stellen Sie bitte Ihre Einkäufe wieder her.`,
 		buyErrorMessageUserConflict: () => `Produkt, das einem anderen Benutzer gehört, melden Sie sich bitte bei dem Konto an, das Sie während des Kaufs verwendet haben, oder stellen Sie Ihre Einkäufe wieder her.`,

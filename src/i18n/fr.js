@@ -22,6 +22,7 @@ export default {
 		buyErrorMessageTransactionNotFound: () => `Votre paiement a échoué, veuillez réessayer plus tard.`,
 		buyErrorMessageNetworkError: () => `Erreur réseau, veuillez réessayer plus tard.`,
 		buyErrorMessageBillingUnavailable: () => `Les achats ne sont actuellement pas supportés sur votre téléphone, veuillez réessayer plus tard.`,
+		buyErrorMessagePlayStoreOutdated: () => `Le système de facturation n'est pas disponible actuellement. Votre application Play Store est obsolète. Veuillez la mettre à jour et réessayer.`,
 		buyErrorMessageCrossPlatformConflict: (opts) => `Il semblerait que vous ayez déjà un abonnement actif sur une autre plateforme (${opts.platform}), veuillez utiliser la même plateforme pour changer votre abonnement ou attendez que celui-ci expire.`,
 		buyErrorMessageProductAlreadyPurchased: () => `Achat déjà effectué, si vous n'avez pas accès au produit veuillez restaurer vos achats.`,
 		buyErrorMessageUserConflict: () => `Produit détenu par un autre utilisateur, veuillez vous connecter au compte que vous utilisiez durant l'achat ou restaurez vos achats.`,

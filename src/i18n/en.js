@@ -22,6 +22,7 @@ export default {
 		buyErrorMessageTransactionNotFound: () => `We were not able to process your purchase, please try again later.`,
 		buyErrorMessageNetworkError: () => `Network error, please try again later.`,
 		buyErrorMessageBillingUnavailable: () => `Billing system currently unavailable on your device, please try again later.`,
+		buyErrorMessagePlayStoreOutdated: () => `The billing system is currently unavailable. Your Play Store app is outdated, please update it and try again.`,
 		buyErrorMessageCrossPlatformConflict: (opts) => `It seems like you already have a subscription on a different platform (${opts.platform}), please use the same platform to change your subscription or wait for your current subscription to expire.`,
 		buyErrorMessageProductAlreadyPurchased: () => `Product already owned, if you do not have access to the product please restore your purchases.`,
 		buyErrorMessageUserConflict: () => `Product owned by a different user, please use the account with which you originally bought the product or restore your purchases.`,
