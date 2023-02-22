@@ -55,6 +55,8 @@ export default {
     billingUnavailable: () => `Sistema di fatturazione attualmente non disponibile sul tuo dispositivo, riprova più tardi.`,
 		playStoreOutdated: () => `Il sistema di fatturazione non è al momento disponibile. La tua app Play Store è obsoleta. Si prega di aggiornarla e riprovare.`,
     networkError: () => `Errore di rete, riprova più tardi.`,
+		unexpectedError: (opts) => `Errore imprevisto, si prega di riprovare più tardi (${opts.code}).`,
+		startMissingError: () => `IAPHUB non è stato avviato correttamente.`,
     tryAgain: () => `Riprova`
 	},
 	/*

@@ -55,6 +55,8 @@ export default {
 		billingUnavailable: () => `Les achats ne sont actuellement pas supportés sur votre téléphone, veuillez réessayer plus tard.`,
 		playStoreOutdated: () => `Le système de facturation n'est pas disponible actuellement. Votre application Play Store est obsolète. Veuillez la mettre à jour et réessayer.`,
 		networkError: () => `Erreur réseau, veuillez réessayer plus tard.`,
+		unexpectedError: (opts) => `Erreur inattendue, veuillez réessayer ultérieurement (${opts.code}).`,
+		startMissingError: () => `IAPHUB n'a pas été démarré correctement.`,
 		tryAgain: () => `Réessayer`
 	},
 	/*

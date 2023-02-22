@@ -55,6 +55,8 @@ export default {
 		billingUnavailable: () => `Sistema de faturação atualmente indisponível no seu dispositivo, tente novamente mais tarde.`,
 		playStoreOutdated: () => `O sistema de faturamento não está disponível no momento. Seu aplicativo da Play Store está desatualizado, por favor atualize-o e tente novamente.`,
 		networkError: () => `Erro de rede, tente novamente mais tarde.`,
+		unexpectedError: (opts) => `Erro inesperado, por favor tente novamente mais tarde (${opts.code}).`,
+		startMissingError: () => `O IAPHUB não foi iniciado corretamente.`,
 		tryAgain: () => `Tente novamente`
 	},
 	/*

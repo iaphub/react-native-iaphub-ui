@@ -55,6 +55,8 @@ export default {
 		billingUnavailable: () => `お使いのデバイスでは課金システムを現在ご利用いただけません。しばらくしてからもう一度お試しください。`,
 		playStoreOutdated: () => `請求システムは現在利用できません。プレイストアアプリが古いため、更新してから再試行してください。`,
 		networkError: () => `ネットワーク エラーです。後でもう一度お試しください。`,
+		unexpectedError: (opts) => `予期せぬエラーが発生しました。後でもう一度お試しください (${opts.code})。`,
+		startMissingError: () => `IAPHUBが正しく開始されていません。`,
 		tryAgain: () => `再試行`
 	},
 	/*
