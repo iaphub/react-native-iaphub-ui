@@ -21,7 +21,7 @@ class Paywall extends React.Component {
         selectedProductForSaleIndex = 0;
         selectedProduct = props.productsForSale[0];
       }
-      if (props.activeProducts.length) {
+      if (props.activeProducts && props.activeProducts.length) {
         selectedProductForSaleIndex = null;
         selectedActiveProductIndex = 0;
         selectedProduct = props.activeProducts[0];

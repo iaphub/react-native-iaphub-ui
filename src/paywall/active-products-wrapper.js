@@ -7,7 +7,7 @@ class ActiveProductsWrapper extends React.Component {
   render() {
     var {ActiveProduct, activeProducts, selectedActiveProductIndex, onProductPress, style, styles, ...props} = this.props;
 
-    if (!ActiveProduct) return null;
+    if (!ActiveProduct || !activeProducts) return null;
     return (
       <View>
         {activeProducts.map((product, index) => (

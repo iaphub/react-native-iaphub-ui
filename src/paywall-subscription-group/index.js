@@ -23,14 +23,16 @@ class PaywallSubscriptionGroup extends React.Component {
     var sameGroup = true;
 
     // Check all subscriptions belong to the same group
-    this.props.productsForSale.reduce((previousProduct, product) => {
-      if (previousProduct && previousProduct.group != product.group) {
-        sameGroup = false;
+    if (this.props.productsForSale) {
+      this.props.productsForSale.reduce((previousProduct, product) => {
+        if (previousProduct && previousProduct.group != product.group) {
+          sameGroup = false;
+        }
+        return product;
+      }, null);
+      if (!sameGroup) {
+        return <Text style={styles.error}>{translate('errorDifferentSubscriptionGroup')}</Text>
       }
-      return product;
-    }, null);
-    if (!sameGroup) {
-      return <Text style={styles.error}>{translate('errorDifferentSubscriptionGroup')}</Text>
     }
     // If everything is fine, display the paywall
     return (
