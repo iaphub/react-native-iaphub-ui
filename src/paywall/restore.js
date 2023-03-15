@@ -5,19 +5,15 @@ import buildTranslate from '../i18n';
 
 class Restore extends React.Component {
 
-  static defaultProps = {
-		activityIndicatorColor: '#ffffff'
-	};
-
   render() {
-    var {styles, lang, i18n, isRestoreLoading, activityIndicatorColor, onRestore} = this.props;
+    var {styles, lang, i18n, isRestoreLoading, onRestore} = this.props;
     var translate = buildTranslate('Restore', lang, i18n);
 
     return (
 			<View style={styles.root}>
         <TouchableOpacity style={styles.content} onPress={onRestore}>
 				  <Text style={styles.text}>{translate('restorePurchases')}</Text>
-          {isRestoreLoading && <ActivityIndicator size="small" style={styles.activityIndicator} color={activityIndicatorColor} />}
+          {isRestoreLoading && <ActivityIndicator size="small" style={styles.activityIndicator} color={styles.activityIndicator[styles.activityIndicator.length - 1].color} />}
         </TouchableOpacity>
 			</View>
 		)
@@ -41,7 +37,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   activityIndicator: {
-    marginLeft: 5
+    marginLeft: 5,
+    color: '#ffffff'
   }
 });
 

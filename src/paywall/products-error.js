@@ -6,12 +6,8 @@ import buildTranslate from '../i18n';
 
 class ProductsError extends React.Component {
 
-	static defaultProps = {
-		activityIndicatorColor: '#000000'
-	};
-
   render() {
-		var {styles, lang, i18n, activityIndicatorColor, isProductsRefreshing, err, onRefreshProducts} = this.props;
+		var {styles, lang, i18n, isProductsRefreshing, err, onRefreshProducts} = this.props;
 		var translate = buildTranslate('ProductsError', lang, i18n);
     var description = translate('noProducts');
 
@@ -46,7 +42,7 @@ class ProductsError extends React.Component {
           {!isProductsRefreshing && <Ripple onPress={() => onRefreshProducts()}>
             <Text style={styles.buttonText}>{translate('tryAgain')}</Text>
           </Ripple>}
-					{isProductsRefreshing && <ActivityIndicator size="small" color={activityIndicatorColor} />}
+					{isProductsRefreshing && <ActivityIndicator size="small" color={styles.buttonActivityIndicator[styles.buttonActivityIndicator.length - 1].color} />}
         </View>
 			</View>
 		)
@@ -85,13 +81,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    height: 40,
-    //backgroundColor: 'red'
+    height: 40
   },
   buttonText: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
     color: '#0294FF'
+  },
+  buttonActivityIndicator: {
+    color: '#000000'
   }
 });
 

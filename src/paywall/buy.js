@@ -6,12 +6,8 @@ import buildTranslate from '../i18n';
 
 class Buy extends React.Component {
 
-	static defaultProps = {
-		activityIndicatorColor: '#ffffff'
-	};
-
   render() {
-    var {styles, onBuy, onShowManageSubscriptions, isBuyLoading, lang, i18n, selectedProduct, selectedActiveProductIndex, activeProducts, activityIndicatorColor} = this.props;
+    var {styles, onBuy, onShowManageSubscriptions, isBuyLoading, lang, i18n, selectedProduct, selectedActiveProductIndex, activeProducts} = this.props;
 		if (!selectedProduct) return null;
 		var translate = buildTranslate('Buy', lang, i18n);
 		var buttonText = translate('continue');
@@ -41,7 +37,7 @@ class Buy extends React.Component {
 				<Ripple onPress={() => onPress && onPress(selectedProduct)}>
 					<View style={styles.button}>
 						{!isBuyLoading && <Text style={styles.text}>{buttonText}</Text>}
-						{isBuyLoading && <ActivityIndicator size="small" color={activityIndicatorColor} />}
+						{isBuyLoading && <ActivityIndicator size="small" color={styles.activityIndicator[styles.activityIndicator.length - 1].color} />}
 					</View>
 				</Ripple>
 			</View>
@@ -79,7 +75,10 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: 'white',
 		textTransform: 'uppercase'
-	}
+	},
+	activityIndicator: {
+    color: '#ffffff'
+  }
 });
 
 export default withStyles(styles, 'Buy')(Buy);
