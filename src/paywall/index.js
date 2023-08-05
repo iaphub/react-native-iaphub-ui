@@ -89,7 +89,7 @@ export default class PaywallWrapper extends React.Component {
 				IntroPhase={(IntroPhase === undefined) ? DefaultIntroPhase : IntroPhase}
 				SubscriptionTerms={(SubscriptionTerms === undefined) ? DefaultSubscriptionTerms : SubscriptionTerms}
 				Restore={(Restore === undefined) ? DefaultRestore : Restore}
-				Buy={(Restore === undefined) ? DefaultBuy: Buy}
+				Buy={(Buy === undefined) ? DefaultBuy: Buy}
 				Loading={(Loading === undefined) ? DefaultLoading: Loading}
 			/>
     );
