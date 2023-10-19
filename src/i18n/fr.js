@@ -148,7 +148,7 @@ export default {
 	 */
 	Buy: {
 		continue: () => `Continuer`,
-		replaceSubscription: () => `Replacer abonnement`,
+		replaceSubscription: () => `Remplacer abonnement`,
 		manageSubscription: () => `Gérer abonnement`
 	}
 }
