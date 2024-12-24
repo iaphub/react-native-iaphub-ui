@@ -23,6 +23,7 @@ class Store {
 			appId: "5e4890f6c61fc971cf46db4d",
 			// The (client) api key is available on the settings page of your app
 			apiKey: "SDp7aY220RtzZrsvRpp4BGFm6qZqNkNf",
+      userId: "8888",
       // Allow anonymous purchases
       allowAnonymousPurchase: true
 		});
