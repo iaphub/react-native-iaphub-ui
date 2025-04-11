@@ -39,12 +39,12 @@ class PaywallSubscriptionGroup extends React.Component {
 			<Paywall
         {...props}
         style={styles.root}
-				Product={DefaultProduct || Product}
-        ProductContent={DefaultProductContent || ProductContent}
-        ProductContentSingleMonthlySubscription={DefaultProductContentSingleMonthlySubscription || ProductContentSingleMonthlySubscription}
-        ProductTitle={DefaultProductTitle || ProductTitle}
-        ProductPrice={DefaultProductPrice || ProductPrice}
-        ProductPricePerMonth={DefaultProductPricePerMonth || ProductPricePerMonth}
+				Product={(Product === undefined) ? DefaultProduct : Product}
+        ProductContent={(ProductContent === undefined) ? DefaultProductContent : ProductContent}
+        ProductContentSingleMonthlySubscription={(ProductContentSingleMonthlySubscription === undefined) ? DefaultProductContentSingleMonthlySubscription : ProductContentSingleMonthlySubscription}
+        ProductTitle={(ProductTitle === undefined) ? DefaultProductTitle : ProductTitle}
+        ProductPrice={(ProductPrice === undefined) ? DefaultProductPrice : ProductPrice}
+        ProductPricePerMonth={(ProductPricePerMonth === undefined) ? DefaultProductPricePerMonth : ProductPricePerMonth}
 			/>
     );
   }
