@@ -13,8 +13,9 @@ class ProductPricePerMonth extends Component {
 
     var durations = {"P7D": 0.25, "P1W": 0.25, "P1M": 1, "P3M": 3, "P6M": 6, "P1Y": 12};
     var price = Math.round((product.price / durations[product.subscriptionDuration]) * 100) / 100;
-    var currency = product.localizedPrice.match(/[^0-9.]+/);
-    var localizedPrice = isNaN(product.localizedPrice) ? currency + price : price + currency;
+    var currency = product.localizedPrice.match(/[^0-9.,]+/);
+    var isCurrencyAtFront = product.localizedPrice.startsWith(currency) ? true : false;
+    var localizedPrice = isCurrencyAtFront ? currency + price : price + currency;
     var formattedPrice = getSubscriptionPriceDuration(localizedPrice, "P1M", true, lang, i18n);
     var split = formattedPrice.split("/");
 

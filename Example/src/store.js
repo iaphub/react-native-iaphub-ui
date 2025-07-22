@@ -85,9 +85,9 @@ class Store {
           groupName: "subscription_group_1",
           localizedTitle: "Basic",
           localizedDescription: "Become a member of the community",
-          localizedPrice: "$9.99",
+          localizedPrice: "9,99 €",
           price: 9.99,
-          currency: "USD",
+          currency: "EUR",
           subscriptionDuration: "P1M",
           subscriptionIntroPhases: [
             {
